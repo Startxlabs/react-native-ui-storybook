@@ -3,11 +3,13 @@ import {AppRegistry} from 'react-native';
 
 import {getStorybookUI, configure, addDecorator} from '@storybook/react-native';
 import {withKnobs} from '@storybook/addon-knobs';
+import {Usage} from 'storybook-usage';
 
 import {loadStories} from './storyLoader';
 import './rn-addons';
 
-// enables knobs for all stories
+// enables usage, knobs for all stories
+addDecorator(Usage);
 addDecorator(withKnobs);
 
 // import stories
