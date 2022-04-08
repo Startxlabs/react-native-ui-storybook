@@ -1,5 +1,6 @@
 import React, {forwardRef, useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '../../constants/colors';
 import {KEYBOARD_TYPE} from '../../enums/emuns';
 import {InputI} from '../../interfaces/InputInterface';
@@ -109,6 +110,11 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   }}
                   style={styles.isdContainer}>
                   <Text style={styles.isdText}>{selectedIsd}</Text>
+                  <Icon
+                    name="angle-down"
+                    size={15}
+                    color={COLORS.black_rgba(0.4)}
+                  />
                   <View style={styles.line} />
                 </TouchableOpacity>
               )}
