@@ -1,15 +1,7 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
+import {ButtonI} from '../../interfaces/ButtonInterface';
 import styles from './ButtonStyles';
-
-interface Props {
-  disabled?: boolean;
-  bgColor?: string;
-  borderColor?: string;
-  text: string;
-  textColor?: string;
-  handlePress?: () => void;
-}
 
 export const Button = ({
   disabled = false,
@@ -18,7 +10,7 @@ export const Button = ({
   text = 'Button',
   textColor = '#fff',
   handlePress,
-}: Props) => {
+}: ButtonI) => {
   return (
     <TouchableOpacity
       activeOpacity={0.8}

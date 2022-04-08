@@ -1,19 +1,14 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import {GradientButtonI} from '../../interfaces/ButtonInterface';
 import styles from './ButtonStyles';
-
-interface ButtonProps {
-  text: string;
-  colorsArray?: Array<string>;
-  handlePress?: () => void;
-}
 
 export const GradientButton = ({
   text,
   colorsArray = [],
   handlePress,
-}: ButtonProps) => {
+}: GradientButtonI) => {
   return (
     <>
       <TouchableOpacity

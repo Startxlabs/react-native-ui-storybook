@@ -1,0 +1,25 @@
+// actual keyboard type
+export enum KEYBOARD_ACTUAL_TYPE {
+	NAME_TYPE = "default",
+	DESCRIPTION_TYPE = "default",
+	ADDRESS_TYPE = "default",
+	PASSWORD_TYPE = "default",
+	NUMBER_TYPE = "number-pad",
+	DECIMAL_NUMBER_TYPE = "decimal-pad",
+	NUMERIC_TYPE = "numeric",
+	EMAIL_TYPE = "email-address",
+	PHONE_NUMBER_TYPE = "phone-pad",
+};
+
+// user defined keyboard type
+export enum KEYBOARD_TYPE {
+	NAME_TYPE = "NAME_TYPE",
+	DESCRIPTION_TYPE = "DESCRIPTION_TYPE",
+	ADDRESS_TYPE = "ADDRESS_TYPE",
+	PASSWORD_TYPE = "PASSWORD_TYPE",
+	NUMBER_TYPE = "NUMBER_TYPE",
+	DECIMAL_NUMBER_TYPE = "DECIMAL_NUMBER_TYPE",
+	NUMERIC_TYPE = "NUMERIC_TYPE",
+	EMAIL_TYPE = "EMAIL_TYPE",
+	PHONE_NUMBER_TYPE = "PHONE_NUMBER_TYPE",
+};
