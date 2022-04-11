@@ -23,6 +23,8 @@ storiesOf('Input', module).add('Default', () => {
             editable: true,
             placeholder: 'First name',
           }}
+          hasMessageIcon={true}
+          isMessageRight={false}
           // inputStatus={'error'}
           // message={'First name is longer than 100 characters'}
         />

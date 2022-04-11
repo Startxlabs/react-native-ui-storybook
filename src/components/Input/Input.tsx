@@ -20,6 +20,8 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
       message,
       onFocus,
       textInputProps,
+      hasMessageIcon = true,
+      isMessageRight = false,
       ...props
     },
     ref: any,
@@ -79,6 +81,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   color:
                     inputStatus === 'error' ? COLORS.danger : COLORS.success,
                 }}
+                inputStatus={inputStatus}
+                hasMessageIcon={hasMessageIcon}
+                isMessageRight={isMessageRight}
               />
             ) : null}
           </View>
@@ -147,6 +152,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   color:
                     inputStatus === 'error' ? COLORS.danger : COLORS.success,
                 }}
+                inputStatus={inputStatus}
+                hasMessageIcon={hasMessageIcon}
+                isMessageRight={isMessageRight}
               />
             ) : null}
           </View>

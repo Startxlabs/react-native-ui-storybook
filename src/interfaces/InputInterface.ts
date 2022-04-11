@@ -11,5 +11,7 @@ export interface InputI {
   inputTextStyle?: StyleProp<TextStyle>;
   message?: string;
   textInputProps?: object;
+  hasMessageIcon?: boolean;
+  isMessageRight?: boolean;
   onFocus?: () => void;
 };
