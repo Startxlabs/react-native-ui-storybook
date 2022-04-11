@@ -8,12 +8,21 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   inputContainer: {
+    position: 'relative',
+    justifyContent: 'center',
     width: '100%',
     height: 50,
     maxHeight: 50,
     backgroundColor: COLORS.white,
     borderWidth: 0.5,
     borderRadius: 10,
+  },
+  labelStyle: {
+    position: 'absolute',
+    marginHorizontal: 10,
+    paddingHorizontal: 5,
+    fontSize: 12,
+    backgroundColor: COLORS.white,
   },
   inputText: {
     fontSize: 12,

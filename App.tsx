@@ -6,6 +6,7 @@
 
 // export default App;
 
+import 'react-native-gesture-handler';
 import {LogBox} from 'react-native';
 
 LogBox.ignoreLogs(['EventEmitter.removeListener']);

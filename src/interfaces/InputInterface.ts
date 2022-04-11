@@ -1,7 +1,6 @@
 import { StyleProp, TextStyle, ViewStyle } from "react-native";
 
 export type inputStatusType = 'success' | 'error' | 'default';
-
 export interface InputI {
   label?: string;
   disabled?: boolean;

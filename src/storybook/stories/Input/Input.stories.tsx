@@ -6,6 +6,7 @@ import {Input} from '../../../components/Input';
 import {View} from 'react-native';
 import {KEYBOARD_TYPE} from '../../../enums/emuns';
 
+// don't pass placeholder if using label
 storiesOf('Input', module).add('Default', () => {
   return (
     <CenterComponent>
@@ -15,6 +16,7 @@ storiesOf('Input', module).add('Default', () => {
             console.log('focused');
           }}
           inputType={KEYBOARD_TYPE.NAME_TYPE}
+          label={'First name'}
           textInputProps={{
             value: '',
             onChangeText: () => {},

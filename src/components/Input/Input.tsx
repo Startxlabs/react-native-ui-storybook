@@ -1,5 +1,10 @@
 import React, {forwardRef, useState} from 'react';
 import {Text, TextInput, TouchableOpacity, View} from 'react-native';
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '../../constants/colors';
 import {KEYBOARD_TYPE} from '../../enums/emuns';
@@ -30,6 +35,7 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
     const [showISDPicker, setShowISDPicker] = React.useState(false);
     const [secret, toggleSecret] = React.useState(true);
     const [selectedIsd, setSelectedIsd] = React.useState('+61');
+    const labelOffset = useSharedValue(0);
 
     let borderColor = {borderColor: COLORS.black_rgba(0.3)};
 
@@ -51,6 +57,18 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
       borderColor.borderColor = COLORS.purple_rgba(0.7);
     }
 
+    const labelAnimatedStyles = useAnimatedStyle(() => {
+      return {
+        transform: [
+          {
+            translateY: isInputFocused
+              ? withTiming(labelOffset.value - 25, {duration: 200})
+              : withTiming(0, {duration: 200}),
+          },
+        ],
+      };
+    });
+
     // render input field based on keyboard type
     switch (inputType) {
       case KEYBOARD_TYPE.PASSWORD_TYPE:
@@ -58,12 +76,20 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
           <View style={styles.root}>
             <View
               style={[styles.inputContainer, inputContainerStyle, borderColor]}>
+              {label && label?.length > 0 ? (
+                <Animated.Text style={[labelAnimatedStyles, styles.labelStyle]}>
+                  {label}
+                </Animated.Text>
+              ) : null}
               <TextInput
                 ref={ref}
                 {...getDefaultInputProps(inputType, isInputFocused)}
                 style={[styles.inputText, inputTextStyle]}
                 secureTextEntry={secret}
                 {...textInputProps}
+                placeholder={
+                  label && label.length > 0 ? '' : textInputProps?.placeholder
+                }
                 onFocus={() => {
                   onFocus?.();
                   setIsInputFocused(true);
@@ -123,6 +149,11 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   <View style={styles.line} />
                 </TouchableOpacity>
               )}
+              {label && label?.length > 0 ? (
+                <Animated.Text style={[labelAnimatedStyles, styles.labelStyle]}>
+                  {label}
+                </Animated.Text>
+              ) : null}
               <TextInput
                 ref={ref}
                 {...getDefaultInputProps(inputType, isInputFocused)}
@@ -135,6 +166,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   },
                 ]}
                 {...textInputProps}
+                placeholder={
+                  label && label.length > 0 ? '' : textInputProps?.placeholder
+                }
                 onFocus={() => {
                   onFocus?.();
                   setIsInputFocused(true);
