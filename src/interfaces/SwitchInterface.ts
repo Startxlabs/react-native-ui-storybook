@@ -9,3 +9,17 @@ export interface DefaultSwitchI {
   value?: boolean;
   handleToggle?: () => void;
 };
+
+export interface CustomSwitchI {
+  width?: number;
+  height?: number;
+  thumbWidth?: number;
+  thumbHeight?: number;
+  horizontalMargin?: number;
+  disabled?: boolean;
+  trackColor?: trackColorType;
+  activeThumbColor?: string;
+  inactiveThumbColor?: string;
+  value?: boolean;
+  handleToggle?: () => void;
+};
