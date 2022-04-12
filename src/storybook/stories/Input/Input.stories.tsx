@@ -7,6 +7,8 @@ import {View} from 'react-native';
 import {KEYBOARD_TYPE} from '../../../enums/emuns';
 
 // don't pass placeholder if using label
+// input turns into a floating text input
+// when using label
 storiesOf('Input', module).add('Default', () => {
   return (
     <CenterComponent>
