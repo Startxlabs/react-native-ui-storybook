@@ -5,6 +5,7 @@
 
 function loadStories() {
   require('./stories/Button/Button.stories');
+  require('./stories/Checkbox/Checkbox.stories');
   require('./stories/Input/Input.stories');
   require('./stories/Onboard/Onboard.stories');
   require('./stories/Switch/Switch.stories');
@@ -13,6 +14,7 @@ function loadStories() {
 
 const stories = [
   './stories/Button/Button.stories',
+  './stories/Checkbox/Checkbox.stories',
   './stories/Input/Input.stories',
   './stories/Onboard/Onboard.stories',
   './stories/Switch/Switch.stories',
