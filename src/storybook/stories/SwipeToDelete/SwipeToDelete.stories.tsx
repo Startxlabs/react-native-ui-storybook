@@ -33,6 +33,8 @@ const data = [
 ];
 
 storiesOf('Swipe To Delete', module).add('Example', () => {
+  // todo: handle edit item
+  const onEdit = () => {};
   // todo: handle delete item
   const onDelete = () => {};
 
@@ -47,7 +49,11 @@ storiesOf('Swipe To Delete', module).add('Example', () => {
     return (
       <View key={uuidv4()}>
         <SwipeToDelete
-          /* simultaneousHandlers={flatListRef} */ item={item}
+          /* simultaneousHandlers={flatListRef} */
+          item={item}
+          hasEdit={false}
+          hasDelete={true}
+          onEdit={onEdit}
           onDelete={onDelete}
         />
       </View>
@@ -56,7 +62,11 @@ storiesOf('Swipe To Delete', module).add('Example', () => {
 
   return (
     <View style={{flex: 1, backgroundColor: '#fafafa'}}>
-      <FlatList /* ref={flatListRef} */ data={data} renderItem={renderItem} />
+      <FlatList
+        /* ref={flatListRef} */
+        data={data}
+        renderItem={renderItem}
+      />
     </View>
   );
 });

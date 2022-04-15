@@ -1,11 +1,10 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
 } from 'react-native-gesture-handler';
 import Animated, {
-  runOnJS,
   useAnimatedGestureHandler,
   useAnimatedStyle,
   useSharedValue,
@@ -21,39 +20,33 @@ const TRANSLATE_X_THRESHOLD = -(windowWidth * 0.3);
 
 export const SwipeToDelete = ({
   item,
+  hasEdit = false,
+  hasDelete = true,
+  onEdit,
   onDelete,
   simultaneousHandlers,
 }: SwipeToDeleteI) => {
   const translateX = useSharedValue(0);
-  const itemHeight = useSharedValue(LIST_ITEM_HEIGHT);
-  const marginVertical = useSharedValue(10);
-  const iconOpacity = useSharedValue(1);
 
-  const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>({
-    onActive: event => {
-      translateX.value = event.translationX;
+  const panGesture = useAnimatedGestureHandler<
+    PanGestureHandlerGestureEvent,
+    {startX: number}
+  >({
+    onStart: (_, ctx) => {
+      ctx.startX = translateX.value;
+    },
+    onActive: (event, ctx) => {
+      translateX.value = ctx.startX + event.translationX;
     },
     onEnd: () => {
-      const shouldDismiss = translateX.value < TRANSLATE_X_THRESHOLD;
+      const shouldHold = translateX.value < TRANSLATE_X_THRESHOLD;
 
       /**
        * * if the user swipes beyond the defined
-       * * threshold, the item should be deleted
+       * * threshold, the item should hold the position
        */
-      if (shouldDismiss) {
-        translateX.value = withTiming(-windowWidth);
-        itemHeight.value = withTiming(0);
-        marginVertical.value = withTiming(0);
-        iconOpacity.value = withTiming(0, undefined, isFinished => {
-          if (isFinished && onDelete) {
-            /**
-             * * runOnJS will run this on JS thread
-             * * pass the args to onDelete
-             * * as runOnJS(onDelete)(args)
-             */
-            runOnJS(onDelete)();
-          }
-        });
+      if (shouldHold) {
+        translateX.value = withTiming(TRANSLATE_X_THRESHOLD);
       } else {
         translateX.value = withTiming(0);
       }
@@ -68,26 +61,34 @@ export const SwipeToDelete = ({
     ],
   }));
 
-  const iconContainerStyle = useAnimatedStyle(() => {
-    const opacity = withTiming(
-      translateX.value < TRANSLATE_X_THRESHOLD ? 1 : 0,
-    );
-    return {opacity};
-  });
-
-  const itemHeightStyle = useAnimatedStyle(() => {
-    return {
-      height: itemHeight.value,
-      marginVertical: marginVertical.value,
-      opacity: iconOpacity.value,
-    };
-  });
-
   return (
-    <Animated.View style={[styles.root, itemHeightStyle]}>
-      <Animated.View style={[styles.iconContainer, iconContainerStyle]}>
-        <Icon name={'trash-o'} size={LIST_ITEM_HEIGHT * 0.4} color={'red'} />
-      </Animated.View>
+    <View style={styles.root}>
+      <View
+        style={[
+          styles.iconContainer,
+          {
+            width:
+              hasEdit && hasDelete ? LIST_ITEM_HEIGHT * 1.5 : LIST_ITEM_HEIGHT,
+            right: hasEdit && hasDelete ? '5%' : '10%',
+          },
+        ]}>
+        {hasEdit && (
+          <Icon
+            name={'edit'}
+            size={LIST_ITEM_HEIGHT * 0.4}
+            color={'#007FFF'}
+            onPress={onEdit}
+          />
+        )}
+        {hasDelete && (
+          <Icon
+            name={'trash-o'}
+            size={LIST_ITEM_HEIGHT * 0.4}
+            color={'red'}
+            onPress={onDelete}
+          />
+        )}
+      </View>
       <PanGestureHandler
         simultaneousHandlers={simultaneousHandlers}
         onGestureEvent={panGesture}>
@@ -95,6 +96,6 @@ export const SwipeToDelete = ({
           <Text style={styles.itemText}>{item.todo}</Text>
         </Animated.View>
       </PanGestureHandler>
-    </Animated.View>
+    </View>
   );
 };

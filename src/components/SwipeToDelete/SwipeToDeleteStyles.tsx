@@ -6,6 +6,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    marginVertical: 10,
   },
   itemContainer: {
     position: 'relative',
@@ -30,10 +31,10 @@ export const styles = StyleSheet.create({
   },
   iconContainer: {
     position: 'absolute',
-    right: '10%',
-    width: LIST_ITEM_HEIGHT,
-    height: LIST_ITEM_HEIGHT,
-    justifyContent: 'center',
+    right: '5%',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
     alignItems: 'center',
+    height: LIST_ITEM_HEIGHT,
   },
 });
