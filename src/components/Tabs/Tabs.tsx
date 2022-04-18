@@ -24,7 +24,7 @@ export const Tabs = ({tabsData}: TabsI) => {
     });
   }, [activeTabIndex]);
 
-  const _onViewableItemsChanged = useCallback(({viewableItems}) => {
+  const _onViewableItemsChanged = useCallback(({viewableItems}: any) => {
     if (viewableItems.length > 0) {
       setActiveTabIndex(viewableItems[0]?.index);
     }

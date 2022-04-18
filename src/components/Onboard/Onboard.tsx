@@ -81,7 +81,7 @@ export const Onboard = ({
 
       <View style={[styles.paginationWrapper, paginationStyle]}>
         {renderPagination
-          ? renderPagination
+          ? renderPagination()
           : slides.length > 0 &&
             slides.map((_, index) => (
               <View key={uuidv4()}>
