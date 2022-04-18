@@ -6,3 +6,4 @@ import './Onboard/Onboard.stories';
 import './Checkbox/Checkbox.stories';
 import './OtpInput/OtpInput.stories';
 import './SwipeToDelete/SwipeToDelete.stories';
+import './Tabs/Tabs.stories';

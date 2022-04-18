@@ -11,6 +11,7 @@ function loadStories() {
   require('./stories/OtpInput/OtpInput.stories');
   require('./stories/SwipeToDelete/SwipeToDelete.stories');
   require('./stories/Switch/Switch.stories');
+  require('./stories/Tabs/Tabs.stories');
   require('./stories/Welcome/Welcome.stories');
 }
 
@@ -22,6 +23,7 @@ const stories = [
   './stories/OtpInput/OtpInput.stories',
   './stories/SwipeToDelete/SwipeToDelete.stories',
   './stories/Switch/Switch.stories',
+  './stories/Tabs/Tabs.stories',
   './stories/Welcome/Welcome.stories',
 ];
 
