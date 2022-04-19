@@ -13,6 +13,7 @@
   - [Swipe to delete](#swipe-to-delete)
   - [Switch](#switch)
   - [Tabs](#tabs)
+  - [Custom Image](#custom-image)
 - [Contribute](#contribute)
 
 ## Introduction
@@ -326,6 +327,26 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | Prop     | Type                                               | Optional | Default | Description                             |
 | -------- | -------------------------------------------------- | -------- | ------- | --------------------------------------- |
 | tabsData | [{ title: string, tabContent: JSX.Element }, ... ] | No       |         | Tab data with tab title and tab content |
+
+<hr />
+
+### Custom Image
+
+#### Usage <br />
+
+```
+  <CustomImage
+    heightPercent={40}
+    imageURL={'https://picsum.photos/id/33/800'}
+  />
+```
+
+#### Props
+
+| Prop          | Type   | Optional | Default | Description                          |
+| ------------- | ------ | -------- | ------- | ------------------------------------ |
+| heightPercent | number | Yes      | 35      | Image height as per parent container |
+| imageURL      | string | No       |         | Image url to show                    |
 
 <hr />
 
