@@ -22,10 +22,10 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 ## Installation
 
-1. Run storybook
+1. Run storybook <br />
    `npm run storybook`
 
-2. Run on device
+2. Run on device <br />
    `npm run ios`
 
 ## Components
