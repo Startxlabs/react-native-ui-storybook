@@ -45,8 +45,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 #### Props
 
-<hr />
-
 | Prop        | Type     | Optional | Default   | Description                    |
 | ----------- | -------- | -------- | --------- | ------------------------------ |
 | text        | string   | No       | 'Button'  | Button text                    |
@@ -73,8 +71,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 ```
 
 #### Props
-
-<hr />
 
 | Prop          | Type                | Optional | Default  | Description              |
 | ------------- | ------------------- | -------- | -------- | ------------------------ |
@@ -109,8 +105,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 ```
 
 #### Props
-
-<hr />
 
 | Prop                | Type                              | Optional | Default | Description                              |
 | ------------------- | --------------------------------- | -------- | ------- | ---------------------------------------- |
@@ -191,8 +185,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 #### Props
 
-<hr />
-
 | Prop                 | Type                                     | Optional | Default | Description                                        |
 | -------------------- | ---------------------------------------- | -------- | ------- | -------------------------------------------------- |
 | logo                 | function                                 | Yes      |         | Render custom logo (JSX)                           |
@@ -227,8 +219,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 #### Props
 
-<hr />
-
 | Prop            | Type                              | Optional | Default   | Description                                 |
 | --------------- | --------------------------------- | -------- | --------- | ------------------------------------------- |
 | value           | string                            | No       |           | Otp input value                             |
@@ -257,8 +247,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 ```
 
 #### Props
-
-<hr />
 
 | Prop                 | Type                   | Optional | Default | Description                                |
 | -------------------- | ---------------------- | -------- | ------- | ------------------------------------------ |
@@ -289,8 +277,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 ```
 
 #### Props
-
-<hr />
 
 | Prop               | Type                            | Optional | Default                                                       | Description                      |
 | ------------------ | ------------------------------- | -------- | ------------------------------------------------------------- | -------------------------------- |
@@ -336,8 +322,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 ```
 
 #### Props
-
-<hr />
 
 | Prop     | Type                                               | Optional | Default | Description                             |
 | -------- | -------------------------------------------------- | -------- | ------- | --------------------------------------- |
