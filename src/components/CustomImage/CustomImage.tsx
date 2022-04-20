@@ -10,7 +10,7 @@ import Animated, {
   useSharedValue,
   withTiming,
 } from 'react-native-reanimated';
-import {CustomImageI} from '../../interfaces/CustomImageInterface';
+import {CustomImageI} from './CustomImageInterface';
 import {windowHeight, windowWidth} from '../../utils/globalFunctions';
 import {styles} from './CustomImageStyles';
 

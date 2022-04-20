@@ -3,7 +3,7 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {COLORS} from '../../constants/colors';
-import {CheckboxI} from '../../interfaces/CheckboxInterface';
+import {CheckboxI} from './CheckboxInterface';
 import {styles} from './CheckboxStyles';
 
 export const Checkbox = ({

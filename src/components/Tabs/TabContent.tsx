@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {TabI} from '../../interfaces/TabsInterface';
+import {TabI} from './TabsInterface';
 import {styles} from './TabStyles';
 
 const TabContent = ({tabContent}: TabI) => {

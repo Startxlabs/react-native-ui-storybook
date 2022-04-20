@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {Animated, Image, ScrollView, Text, View} from 'react-native';
 import {v4 as uuidv4} from 'uuid';
-import {OnboardI} from '../../interfaces/OnboardInterface';
+import {OnboardI} from './OnboardInterface';
 import {windowWidth} from '../../utils/globalFunctions';
 import {styles} from './OnboardStyles';
 

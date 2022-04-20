@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, TextInput} from 'react-native';
 import {COLORS} from '../../constants/colors';
-import {OtpInputI} from '../../interfaces/OtpInputInterface';
+import {OtpInputI} from './OtpInputInterface';
 
 export const OtpInput = React.forwardRef(
   (

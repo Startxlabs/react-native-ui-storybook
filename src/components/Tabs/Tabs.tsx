@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {FlatList, Text, TouchableOpacity, View} from 'react-native';
 import Animated, {useAnimatedStyle, withTiming} from 'react-native-reanimated';
-import {TabsI} from '../../interfaces/TabsInterface';
+import {TabsI} from './TabsInterface';
 import {windowWidth} from '../../utils/globalFunctions';
 import TabContent from './TabContent';
 import {styles} from './TabStyles';

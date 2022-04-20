@@ -8,7 +8,7 @@ import Animated, {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '../../constants/colors';
 import {KEYBOARD_TYPE} from '../../enums/emuns';
-import {InputI} from '../../interfaces/InputInterface';
+import {InputI} from './InputInterface';
 import {getDefaultInputProps} from '../../utils/globalFunctions';
 import InlineMessage from './InlineMessage';
 import {styles} from './InputStyles';
