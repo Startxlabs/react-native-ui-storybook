@@ -16,6 +16,7 @@ import {styles} from './InputStyles';
 export const Input = forwardRef<HTMLInputElement, InputI>(
   (
     {
+      isFloating = false,
       label,
       disabled,
       inputType,
@@ -76,7 +77,7 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
           <View style={styles.root}>
             <View
               style={[styles.inputContainer, inputContainerStyle, borderColor]}>
-              {label && label?.length > 0 ? (
+              {isFloating && label && label?.length > 0 ? (
                 <Animated.Text style={[labelAnimatedStyles, styles.labelStyle]}>
                   {label}
                 </Animated.Text>
@@ -88,7 +89,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                 secureTextEntry={secret}
                 {...textInputProps}
                 placeholder={
-                  label && label.length > 0 ? '' : textInputProps?.placeholder
+                  isFloating && label && label.length > 0
+                    ? ''
+                    : textInputProps?.placeholder
                 }
                 onFocus={() => {
                   onFocus?.();
@@ -149,7 +152,7 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   <View style={styles.line} />
                 </TouchableOpacity>
               )}
-              {label && label?.length > 0 ? (
+              {isFloating && label && label?.length > 0 ? (
                 <Animated.Text style={[labelAnimatedStyles, styles.labelStyle]}>
                   {label}
                 </Animated.Text>
@@ -167,7 +170,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                 ]}
                 {...textInputProps}
                 placeholder={
-                  label && label.length > 0 ? '' : textInputProps?.placeholder
+                  isFloating && label && label.length > 0
+                    ? ''
+                    : textInputProps?.placeholder
                 }
                 onFocus={() => {
                   onFocus?.();
