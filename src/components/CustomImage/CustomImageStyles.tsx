@@ -14,4 +14,17 @@ export const styles = EStyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  fullScreenImageWrapper: {
+    position: 'relative',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0,0,0,0.9)',
+  },
+  closeIcon: {
+    position: 'absolute',
+    top: '3rem',
+    right: '1rem',
+    zIndex: 99,
+  },
 });
