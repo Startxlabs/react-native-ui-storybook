@@ -1,3 +1,4 @@
+export type otpInputStatusType = "success" | "error" | "default";
 export interface OtpInputI {
 	value: string;
 	textInputFocus: (e: any) => void;
@@ -5,5 +6,10 @@ export interface OtpInputI {
 	onSubmitEditing?: (e: any) => void;
 	onChangeText?: (text: any) => void;
 	onKeyPress?: (e: any) => void;
-	inputStatusType?: "success" | "error" | "default";
+	inputStatusType?: otpInputStatusType;
+};
+
+export interface OtpI {
+	inputStatusType?: otpInputStatusType;
+	onSubmit?: (otp: Array<string>) => void;
 };

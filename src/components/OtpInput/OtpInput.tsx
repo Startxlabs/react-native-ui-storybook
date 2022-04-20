@@ -9,9 +9,9 @@ export const OtpInput = React.forwardRef(
       value,
       textInputFocus,
       textInputBlur,
-      onSubmitEditing = () => {},
-      onChangeText = () => {},
-      onKeyPress = () => {},
+      onSubmitEditing,
+      onChangeText,
+      onKeyPress,
       inputStatusType = 'default',
     }: OtpInputI,
     ref: any,
@@ -49,9 +49,9 @@ export const OtpInput = React.forwardRef(
             setIsInputFocused(false);
             textInputBlur(event);
           }}
-          onSubmitEditing={event => onSubmitEditing(event)}
-          onChangeText={text => onChangeText(text)}
-          onKeyPress={nativeEvent => onKeyPress(nativeEvent)}
+          onSubmitEditing={onSubmitEditing}
+          onChangeText={onChangeText}
+          onKeyPress={onKeyPress}
         />
       </>
     );
