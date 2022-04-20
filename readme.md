@@ -22,17 +22,17 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 ## Installation
 
-1. Run storybook <br />
+1. Run storybook
    `npm run storybook`
 
-2. Run on device <br />
+2. Run on device
    `npm run ios`
 
 ## Components
 
 ### Button
 
-#### Usage <br />
+#### Usage
 
 ```
   <Button
@@ -55,11 +55,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | textColor   | string   | Yes      | '#fff'    | Button text color              |
 | handlePress | function | Yes      |           | Handle button press            |
 
-<hr />
-
 ### Checkbox and Radio
 
-#### Usage <br />
+#### Usage
 
 ```
   <Checkbox
@@ -81,11 +79,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | hasGradient   | bool                | Yes      | false    | Gradient background      |
 | handleChange  | function            | Yes      |          | Handle checkbox press    |
 
-<hr />
-
 ### Input
 
-#### Usage <br />
+#### Usage
 
 ```
   <Input
@@ -121,11 +117,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | hasMessageIcon      | bool                              | Yes      | true    | Whether to show icon for message         |
 | isMessageRight      | bool                              | Yes      | false   | Align message to left or right           |
 
-<hr />
-
 ### Onboard
 
-#### Usage <br />
+#### Usage
 
 ```
   <Onboard
@@ -199,11 +193,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | button               | function                                 | Yes      |         | Function to render custom CTA button(JSX)          |
 | loginOption          | function                                 | Yes      |         | Function to render custom login option(JSX)        |
 
-<hr />
-
 ### Otp Input
 
-#### Usage <br />
+#### Usage
 
 ```
   <OtpInput
@@ -230,11 +222,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | onKeyPress      | function                          | Yes      |           | Handle Keyboard key press                   |
 | inputStatusType | "success" \| "error" \| "default" | Yes      | 'default' | Otp input border change as per input status |
 
-<hr />
-
 ### Swipe to delete
 
-#### Usage <br />
+#### Usage
 
 ```
   <SwipeToDelete
@@ -258,11 +248,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | onDelete             | function               | Yes      |         | Handle delete item                         |
 | simultaneousHandlers | PanGestureHandlerProps | Yes      |         | To handle multiple gestures simultaneously |
 
-<hr />
-
 ### Switch
 
-#### Usage <br />
+#### Usage
 
 ```
   <CustomSwitch
@@ -293,11 +281,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | value              | bool                            | Yes      |                                                               | Switch state                     |
 | handleToggle       | function                        | Yes      |                                                               | Function to handle switch toggle |
 
-<hr />
-
 ### Tabs
 
-#### Usage <br />
+#### Usage
 
 ```
   <Tabs
@@ -328,11 +314,9 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | -------- | -------------------------------------------------- | -------- | ------- | --------------------------------------- |
 | tabsData | [{ title: string, tabContent: JSX.Element }, ... ] | No       |         | Tab data with tab title and tab content |
 
-<hr />
-
 ### Custom Image
 
-#### Usage <br />
+#### Usage
 
 ```
   <CustomImage
@@ -347,8 +331,6 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | ------------- | ------ | -------- | ------- | ------------------------------------ |
 | heightPercent | number | Yes      | 35      | Image height as per parent container |
 | imageURL      | string | No       |         | Image url to show                    |
-
-<hr />
 
 ## Contribute
 
