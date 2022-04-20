@@ -1,8 +1,8 @@
 import { ViewStyle } from "react-native";
 
-export interface CheckboxI {
+export interface RadioI {
   value: boolean;
   handleChange?: () => void;
-  checkboxStyle?: ViewStyle;
+  radioStyle?: ViewStyle;
   hasGradient?: boolean;
 };
