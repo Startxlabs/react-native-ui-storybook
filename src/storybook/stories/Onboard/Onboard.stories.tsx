@@ -120,7 +120,7 @@ storiesOf('Onboard', module)
           <View
             style={{
               marginTop: EStyleSheet.value('3rem'),
-              marginBottom: EStyleSheet.value('3rem'),
+              marginBottom: EStyleSheet.value('2rem'),
             }}>
             <Image source={logo} />
           </View>
@@ -141,12 +141,12 @@ storiesOf('Onboard', module)
               ]}>
               <Image
                 source={slide.image}
-                style={{width: '100%', height: '70%'}}
+                style={{width: '100%', height: '65%'}}
               />
               <View
                 style={{
                   justifyContent: 'center',
-                  height: '30%',
+                  height: '35%',
                 }}>
                 <Text
                   allowFontScaling={false}
