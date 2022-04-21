@@ -7,6 +7,7 @@ import {styles} from './OnboardStyles';
 
 export const Onboard = ({
   logo,
+  renderSlides,
   slides = [],
   sliderContainerStyle,
   sliderTextStyle,
@@ -48,34 +49,36 @@ export const Onboard = ({
           disableIntervalMomentum
           snapToInterval={windowWidth}
           snapToAlignment={'center'}>
-          {slides.length > 0 &&
-            slides.map(slide => (
-              <View
-                key={uuidv4()}
-                style={[
-                  styles.slideStyle,
-                  {
-                    width: windowWidth,
-                    paddingHorizontal: 40,
-                  },
-                ]}>
-                <Image
-                  source={{uri: slide.image}}
-                  style={{width: '100%', height: '80%'}}
-                />
+          {renderSlides
+            ? renderSlides()
+            : slides.length > 0 &&
+              slides.map(slide => (
                 <View
-                  style={{
-                    justifyContent: 'center',
-                    height: '20%',
-                  }}>
-                  <Text
-                    allowFontScaling={false}
-                    style={[styles.sliderText, sliderTextStyle]}>
-                    {slide.slideText}
-                  </Text>
+                  key={uuidv4()}
+                  style={[
+                    styles.slideStyle,
+                    {
+                      width: windowWidth,
+                      paddingHorizontal: 40,
+                    },
+                  ]}>
+                  <Image
+                    source={slide.image}
+                    style={{width: '100%', height: '80%'}}
+                  />
+                  <View
+                    style={{
+                      justifyContent: 'center',
+                      height: '20%',
+                    }}>
+                    <Text
+                      allowFontScaling={false}
+                      style={[styles.sliderText, sliderTextStyle]}>
+                      {slide.slideText}
+                    </Text>
+                  </View>
                 </View>
-              </View>
-            ))}
+              ))}
         </ScrollView>
       </View>
 
@@ -83,7 +86,7 @@ export const Onboard = ({
 
       <View style={[styles.paginationWrapper, paginationStyle]}>
         {renderPagination
-          ? renderPagination()
+          ? renderPagination(slideIndex)
           : slides.length > 0 &&
             slides.map((_, index) => (
               <View key={uuidv4()}>
