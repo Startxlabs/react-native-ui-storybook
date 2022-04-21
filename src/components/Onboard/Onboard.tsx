@@ -22,7 +22,7 @@ export const Onboard = ({
 
   const handleScroll = (event: any) => {
     const positionX = event.nativeEvent.contentOffset.x;
-    const currentIndex = Math.floor(positionX / (windowWidth * 0.8));
+    const currentIndex = Math.floor(positionX / windowWidth);
 
     if (currentIndex !== slideIndex && currentIndex >= 0) {
       setSlideIndex(currentIndex);
@@ -45,7 +45,8 @@ export const Onboard = ({
             },
           )}
           scrollEventThrottle={16}
-          snapToInterval={windowWidth * 0.8}
+          disableIntervalMomentum
+          snapToInterval={windowWidth}
           snapToAlignment={'center'}>
           {slides.length > 0 &&
             slides.map(slide => (
@@ -54,7 +55,8 @@ export const Onboard = ({
                 style={[
                   styles.slideStyle,
                   {
-                    width: windowWidth * 0.8,
+                    width: windowWidth,
+                    paddingHorizontal: 40,
                   },
                 ]}>
                 <Image
