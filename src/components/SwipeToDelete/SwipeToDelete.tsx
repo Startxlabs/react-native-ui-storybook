@@ -11,7 +11,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {SwipeToDeleteI} from '../../interfaces/SwipeToDeleteInterface';
+import {SwipeToDeleteI} from './SwipeToDeleteInterface';
 import {styles} from './SwipeToDeleteStyles';
 import {LIST_ITEM_HEIGHT} from '../../constants/constants';
 import {windowWidth} from '../../utils/globalFunctions';

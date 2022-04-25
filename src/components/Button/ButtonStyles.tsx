@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     borderColor: '#0D0113',
+    backgroundColor: '#0D0113',
     borderRadius: 10,
   },
   linearGradient: {

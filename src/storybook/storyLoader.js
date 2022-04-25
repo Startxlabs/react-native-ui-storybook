@@ -10,6 +10,7 @@ function loadStories() {
   require('./stories/Input/Input.stories');
   require('./stories/Onboard/Onboard.stories');
   require('./stories/OtpInput/OtpInput.stories');
+  require('./stories/Radio/Radio.stories');
   require('./stories/SwipeToDelete/SwipeToDelete.stories');
   require('./stories/Switch/Switch.stories');
   require('./stories/Tabs/Tabs.stories');
@@ -24,6 +25,7 @@ const stories = [
   './stories/Input/Input.stories',
   './stories/Onboard/Onboard.stories',
   './stories/OtpInput/OtpInput.stories',
+  './stories/Radio/Radio.stories',
   './stories/SwipeToDelete/SwipeToDelete.stories',
   './stories/Switch/Switch.stories',
   './stories/Tabs/Tabs.stories',

@@ -12,21 +12,39 @@ export const actions = {
 storiesOf('Button', module)
   .add('Primary', () => (
     <CenterComponent>
-      <Button text={'Primary Button'} {...actions} />
+      <Button
+        text={'Primary Button'}
+        buttonContainerStyle={{
+          backgroundColor: '#0D0113',
+          borderColor: '#0D0113',
+        }}
+        {...actions}
+      />
     </CenterComponent>
   ))
   .add('Disabled', () => (
     <CenterComponent>
-      <Button text={'Disabled Button'} disabled />
+      <Button
+        text={'Disabled Button'}
+        buttonContainerStyle={{
+          backgroundColor: 'rgba(13, 1, 19, 0.2)',
+          borderColor: 'transparent',
+        }}
+        disabled
+      />
     </CenterComponent>
   ))
   .add('Custom', () => (
     <CenterComponent>
       <Button
         text={'Custom Button'}
-        bgColor={'#fff'}
-        borderColor={'crimson'}
-        textColor={'#0D0113'}
+        buttonContainerStyle={{
+          backgroundColor: '#fff',
+          borderColor: 'crimson',
+        }}
+        buttonTextStyle={{
+          color: '#0D0113',
+        }}
         {...actions}
       />
     </CenterComponent>

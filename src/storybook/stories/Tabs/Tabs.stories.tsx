@@ -34,6 +34,30 @@ const tabsData = [
       </View>
     ),
   },
+  {
+    title: 'Tab 4',
+    tabContent: (
+      <View style={tabContentStyle}>
+        <Text>Tab 4 content</Text>
+      </View>
+    ),
+  },
+  {
+    title: 'Tab 5',
+    tabContent: (
+      <View style={tabContentStyle}>
+        <Text>Tab 5 content</Text>
+      </View>
+    ),
+  },
+  {
+    title: 'Tab 6',
+    tabContent: (
+      <View style={tabContentStyle}>
+        <Text>Tab 6 content</Text>
+      </View>
+    ),
+  },
 ];
 
 storiesOf('Tabs', module).add('Default', () => {

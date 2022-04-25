@@ -8,6 +8,7 @@ storiesOf('Image', module).add('Default', () => {
     <View style={{flex: 1}}>
       <CustomImage
         heightPercent={40}
+        modalImageHeightPercent={70}
         imageURL={'https://picsum.photos/id/33/800'}
       />
     </View>

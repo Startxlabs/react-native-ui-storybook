@@ -3,11 +3,10 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {COLORS} from '../../constants/colors';
-import {CheckboxI} from '../../interfaces/CheckboxInterface';
+import {CheckboxI} from './CheckboxInterface';
 import {styles} from './CheckboxStyles';
 
 export const Checkbox = ({
-  variant = 'square',
   value,
   handleChange,
   checkboxStyle = {},
@@ -20,24 +19,30 @@ export const Checkbox = ({
     else setIsChecked(prev => !prev);
   };
 
+  // * default checkbox style
+  const defaultCheckboxStyle = {
+    borderWidth: 1,
+    borderColor: value || isChecked ? '#645AFF' : '#949494',
+    backgroundColor: value || isChecked ? '#645AFF' : 'transparent',
+  };
+
+  // * default checkbox style (with gradient)
+  const defaultCheckboxGradientStyle = {
+    borderWidth: value || isChecked ? 0 : 1,
+    borderColor: '#949494',
+    width: value || isChecked ? 20 : 19,
+    height: value || isChecked ? 20 : 19,
+    backgroundColor: value || isChecked ? '#645AFF' : 'transparent',
+  };
+
   return (
     <View>
       <TouchableOpacity activeOpacity={0.8} onPress={toggleCheck}>
         {!hasGradient ? (
-          <View
-            style={[
-              styles.checkbox,
-              {
-                borderWidth: 1,
-                borderRadius: variant === 'circle' ? 50 : 4,
-                borderColor: value || isChecked ? '#645AFF' : '#949494',
-                backgroundColor: value || isChecked ? '#645AFF' : 'transparent',
-              },
-              checkboxStyle,
-            ]}>
+          <View style={[styles.checkbox, defaultCheckboxStyle, checkboxStyle]}>
             {(value || isChecked) && (
               <Icon
-                name={variant === 'circle' ? 'circle' : 'check'}
+                name={'check'}
                 size={14}
                 color={COLORS.white}
                 style={styles.checkIcon}
@@ -49,14 +54,8 @@ export const Checkbox = ({
             style={[
               {...StyleSheet.absoluteFillObject},
               styles.checkbox,
-              {
-                borderWidth: value || isChecked ? 0 : 1,
-                borderRadius: variant === 'circle' ? 50 : 4,
-                borderColor: '#949494',
-                width: value || isChecked ? 20 : 19,
-                height: value || isChecked ? 20 : 19,
-                backgroundColor: value || isChecked ? '#645AFF' : 'transparent',
-              },
+              defaultCheckboxGradientStyle,
+              checkboxStyle,
             ]}
             colors={
               value || isChecked ? ['#645AFF', '#A573FF'] : ['transparent']
@@ -65,7 +64,7 @@ export const Checkbox = ({
             end={{x: 0.0, y: 0.0}}>
             {(value || isChecked) && (
               <Icon
-                name={variant === 'circle' ? 'circle' : 'check'}
+                name={'check'}
                 size={14}
                 color={COLORS.white}
                 style={[styles.checkIcon, {top: 3, left: 3}]}

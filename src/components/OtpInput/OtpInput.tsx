@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, TextInput} from 'react-native';
 import {COLORS} from '../../constants/colors';
-import {OtpInputI} from '../../interfaces/OtpInputInterface';
+import {OtpInputI} from './OtpInputInterface';
 
 export const OtpInput = React.forwardRef(
   (
@@ -9,9 +9,9 @@ export const OtpInput = React.forwardRef(
       value,
       textInputFocus,
       textInputBlur,
-      onSubmitEditing = () => {},
-      onChangeText = () => {},
-      onKeyPress = () => {},
+      onSubmitEditing,
+      onChangeText,
+      onKeyPress,
       inputStatusType = 'default',
     }: OtpInputI,
     ref: any,
@@ -49,9 +49,9 @@ export const OtpInput = React.forwardRef(
             setIsInputFocused(false);
             textInputBlur(event);
           }}
-          onSubmitEditing={event => onSubmitEditing(event)}
-          onChangeText={text => onChangeText(text)}
-          onKeyPress={nativeEvent => onKeyPress(nativeEvent)}
+          onSubmitEditing={onSubmitEditing}
+          onChangeText={onChangeText}
+          onKeyPress={onKeyPress}
         />
       </>
     );

@@ -8,7 +8,7 @@ export const styles = EStyleSheet.create({
     alignItems: 'center',
   },
   slideScrollContainer: {
-    width: '80%',
+    width: '100%',
     height: '40%',
   },
   slideStyle: {

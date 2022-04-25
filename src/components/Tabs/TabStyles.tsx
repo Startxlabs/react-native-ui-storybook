@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
     fontWeight: '700',
   },
   borderWrapper: {
-    position: 'relative',
-    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 0,
   },
   tabHeaderBorder: {
     width: '100%',

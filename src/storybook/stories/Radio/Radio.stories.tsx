@@ -1,16 +1,16 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react-native';
 import CenterComponent from '../CenterComponent';
-import {Checkbox} from '../../../components/Checkbox';
+import {Radio} from '../../../components/Radio';
 
-storiesOf('Checkbox', module)
+storiesOf('Radio', module)
   .add('without gradient', () => {
     return (
       <CenterComponent>
-        <Checkbox
+        <Radio
           value={false}
           // handleChange={() => {}}
-          // checkboxStyle={{}}
+          // radioStyle={{}}
           hasGradient={false}
         />
       </CenterComponent>
@@ -19,10 +19,10 @@ storiesOf('Checkbox', module)
   .add('with gradient', () => {
     return (
       <CenterComponent>
-        <Checkbox
+        <Radio
           value={false}
           // handleChange={() => {}}
-          // checkboxStyle={{}}
+          // radioStyle={{}}
           hasGradient={true}
         />
       </CenterComponent>
