@@ -1,5 +1,9 @@
+import { Dimensions } from "react-native";
 import { COLORS } from "../constants/colors";
 import { KEYBOARD_ACTUAL_TYPE, KEYBOARD_TYPE } from "../enums/emuns";
+
+export const windowWidth = Dimensions.get('window').width;
+export const windowHeight = Dimensions.get('window').height;
 
 export const getDefaultInputProps = (inputType: any, isInputFocused: boolean) => {
   let defaultType: any = {

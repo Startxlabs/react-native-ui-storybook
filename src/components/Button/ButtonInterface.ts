@@ -1,9 +1,10 @@
+import { TextStyle, ViewStyle } from "react-native";
+
 export interface ButtonI {
   disabled?: boolean;
-  bgColor?: string;
-  borderColor?: string;
+  buttonContainerStyle?: ViewStyle;
   text: string;
-  textColor?: string;
+  buttonTextStyle?: TextStyle;
   handlePress?: () => void;
 }
 

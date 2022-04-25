@@ -6,7 +6,7 @@ import Animated, {
   withTiming,
 } from 'react-native-reanimated';
 import {COLORS} from '../../constants/colors';
-import {CustomSwitchI} from '../../interfaces/SwitchInterface';
+import {CustomSwitchI} from './SwitchInterface';
 import {styles} from './SwitchStyles';
 
 export const CustomSwitch = ({
