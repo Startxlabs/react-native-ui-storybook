@@ -19,6 +19,8 @@ target 'RNStorybook' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'react-native-orientation', :path => '../node_modules/react-native-orientation'
+
   target 'RNStorybookTests' do
     inherit! :complete
     # Pods for testing

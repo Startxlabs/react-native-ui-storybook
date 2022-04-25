@@ -1,9 +1,17 @@
-import { Dimensions } from "react-native";
+import { Dimensions, Platform } from "react-native";
 import { COLORS } from "../constants/colors";
 import { KEYBOARD_ACTUAL_TYPE, KEYBOARD_TYPE } from "../enums/emuns";
 
 export const windowWidth = Dimensions.get('window').width;
 export const windowHeight = Dimensions.get('window').height;
+
+export const isIos = () => {
+  return Platform.OS === "ios";
+};
+
+export const isAndroid = () => {
+  return Platform.OS === "android";
+};
 
 export const getDefaultInputProps = (inputType: any, isInputFocused: boolean) => {
   let defaultType: any = {
@@ -59,3 +67,20 @@ export const getDefaultInputProps = (inputType: any, isInputFocused: boolean) =>
 
   return defaultType;
 };
+
+export const padNumber = (num: number) => {
+  return num.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+}
+
+/**
+ * * Format time
+ * @params time (in seconds)
+ */
+
+export const formatTime = (time: number) => {
+  const minutes = Math.floor(time / 60)
+  ;
+  const seconds = padNumber(time % 60);
+
+  return `${minutes}:${seconds}`;
+} 
