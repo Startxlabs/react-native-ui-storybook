@@ -55,4 +55,26 @@ export const styles = StyleSheet.create({
     width: 220,
     justifyContent: 'space-between',
   },
+  settingsWrapper: {
+    position: 'absolute',
+    top: 10,
+    right: 5,
+  },
+  modalStyle: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    margin: 0,
+  },
+  playbackContainer: {
+    minHeight: 350,
+    backgroundColor: '#fff',
+    paddingHorizontal: 20,
+    paddingTop: 10,
+  },
+  playbackSpeedText: {
+    fontSize: 14,
+    paddingVertical: 10,
+    width: '100%',
+  },
 });

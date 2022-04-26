@@ -21,6 +21,9 @@ export const VideoPlayer = ({
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
+  const [showPlaybackModal, setShowPlaybackModal] = useState(false);
+  const [activeSpeed, setActiveSpeed] = useState(1);
 
   const handleLoadingStart = () => {
     setIsLoading(true);
@@ -61,9 +64,11 @@ export const VideoPlayer = ({
       setShowControls(false);
     } else {
       setShowControls(true);
-      if (!isPaused) {
+      if (!isPaused && !showSettings && !showPlaybackModal) {
         setTimeout(() => {
-          setShowControls(false);
+          if (!showSettings && !showPlaybackModal) {
+            setShowControls(false);
+          }
         }, 5000);
       }
     }
@@ -122,6 +127,11 @@ export const VideoPlayer = ({
     }
   };
 
+  // * change video speed
+  const handlePlaybackSpeed = (speed: number) => {
+    setActiveSpeed(speed);
+  };
+
   // * when video ends
   const onEnd = () => {
     setCurrentTime(0);
@@ -156,22 +166,33 @@ export const VideoPlayer = ({
           style={{width: '100%', height: '100%'}}
           resizeMode={'cover'}
           fullscreenOrientation={'landscape'}
+          rate={activeSpeed}
           onEnd={onEnd}
         />
       </TouchableOpacity>
 
       {/* Controls */}
-      {showControls && (
+      {(showControls || showSettings || showPlaybackModal) && (
         <VideoPlayerControls
           isPaused={isPaused}
           isFullScreen={isFullScreen}
           currentTime={currentTime}
           totalDuration={totalDuration}
           handleToggleControls={handleToggleControls}
-          handleBackward={handleBackward}
-          handlePlayPause={handlePlayPause}
-          handleForward={handleForward}
-          handleToggleFullScreen={handleToggleFullScreen}
+          additionalControlProps={{
+            handleBackward,
+            handlePlayPause,
+            handleForward,
+            handleToggleFullScreen,
+            showSettings,
+            handleCloseSettingsModal: (value: boolean) =>
+              setShowSettings(value),
+            showPlaybackModal,
+            handleClosePlaybackModal: (value: boolean) =>
+              setShowPlaybackModal(value),
+            activeSpeed,
+            handlePlaybackSpeed,
+          }}
         />
       )}
 

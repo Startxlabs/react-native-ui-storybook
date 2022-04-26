@@ -5,16 +5,26 @@ export interface VideoPlayerI {
   videoPlayerContainerStyles: ViewStyle;
 };
 
+export interface AdditionalControlPropsI {
+  handleBackward: () => void;
+  handlePlayPause: () => void;
+  handleForward: () => void;
+  handleToggleFullScreen: () => void;
+  showSettings: boolean;
+  handleCloseSettingsModal: (value: boolean) => void;
+  showPlaybackModal: boolean;
+  handleClosePlaybackModal: (value: boolean) => void;
+  activeSpeed: number;
+  handlePlaybackSpeed: (speed: number) => void;
+}
+
 export interface VideoPlayerControlsI {
   isPaused: boolean;
   isFullScreen?: boolean;
   currentTime: number;
   totalDuration: number;
   handleToggleControls?: () => void;
-  handleBackward?: () => void;
-  handlePlayPause?: () => void;
-  handleForward?: () => void;
-  handleToggleFullScreen?: () => void;
+  additionalControlProps: AdditionalControlPropsI;
 }
 
 export interface VideoSliderI {
@@ -26,4 +36,10 @@ export interface VideoSliderI {
   onValuesChangeStart?: () => void;
   onValuesChangeFinish?: (range: Array<number>) => void;
   enableOne?: boolean;
+}
+
+export interface MoreSettingsI {
+  showSettings?: boolean;
+  onClose?: () => void;
+  handlePlaybackModal?: (value: boolean) => void;
 }
