@@ -1,26 +1,23 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import React, {useRef, useState} from 'react';
+import {TouchableOpacity, View} from 'react-native';
 import Video from 'react-native-video';
 import Orientation from 'react-native-orientation';
-import Icon from 'react-native-vector-icons/Ionicons';
-import * as FAIcon from 'react-native-vector-icons/FontAwesome';
-import * as MIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {formatTime, isAndroid} from '../../utils/globalFunctions';
+import {isAndroid, windowWidth} from '../../utils/globalFunctions';
 import {VideoPlayerI} from './VideoPlayerInterface';
 import {styles} from './VideoPlayerStyles';
-
-const FontAwesomeIcon = FAIcon.default;
-const MaterialCommunityIcon = MIcons.default;
+import VideoSlider from './VideoSlider';
+import VideoPlayerControls from './VideoPlayerControls';
 
 export const VideoPlayer = ({
   videoSource,
   videoPlayerContainerStyles,
 }: VideoPlayerI) => {
-  const videoRef = useRef(null);
+  const videoRef = useRef<any>(null);
 
+  const TEN_SECONDS = 10;
   const [isLoading, setIsLoading] = useState(false);
   const [showControls, setShowControls] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [totalDuration, setTotalDuration] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -86,6 +83,54 @@ export const VideoPlayer = ({
     setIsFullScreen(!isFullScreen);
   };
 
+  // * pause video when sliding starts
+  const onValuesChangeStart = () => {
+    setIsPaused(true);
+  };
+
+  // * update current time once sliding finishes
+  const onValuesChangeFinish = (range: Array<number>) => {
+    setCurrentTime(range[0]);
+    setIsPaused(false);
+    videoRef.current?.seek(range[0]);
+  };
+
+  // * backward ten seconds
+  const handleBackward = () => {
+    if (currentTime > TEN_SECONDS) {
+      const backTime = currentTime - TEN_SECONDS;
+      setCurrentTime(backTime);
+      videoRef.current?.seek(backTime);
+    } else {
+      setCurrentTime(0);
+      videoRef.current?.seek(0);
+    }
+  };
+
+  // * forward ten seconds
+  const handleForward = () => {
+    if (totalDuration - currentTime > TEN_SECONDS) {
+      const forwardTime = currentTime + TEN_SECONDS;
+      setCurrentTime(forwardTime);
+      videoRef.current?.seek(forwardTime);
+    } else {
+      setCurrentTime(totalDuration);
+      setIsPaused(true);
+      setTimeout(() => {
+        videoRef.current?.seek(totalDuration);
+      }, 100);
+    }
+  };
+
+  // * when video ends
+  const onEnd = () => {
+    setCurrentTime(0);
+    setIsPaused(true);
+    setTimeout(() => {
+      videoRef.current?.seek(0);
+    }, 1000);
+  };
+
   return (
     <View
       style={[
@@ -108,45 +153,41 @@ export const VideoPlayer = ({
           onBuffer={() => console.log('buffering')}
           controls={false}
           onError={err => console.log('error occurred', err)}
-          style={{width: '100%', height: '100%', position: 'absolute'}}
+          style={{width: '100%', height: '100%'}}
           resizeMode={'cover'}
           fullscreenOrientation={'landscape'}
+          onEnd={onEnd}
         />
       </TouchableOpacity>
-      {(showControls || isPaused) && (
-        <TouchableOpacity
-          style={styles.controlsOverlay}
-          activeOpacity={0.85}
-          onPress={handleToggleControls}>
-          <TouchableOpacity onPress={handlePlayPause} activeOpacity={0.85}>
-            {isPaused ? (
-              <Icon name={'play'} size={40} color={'#fff'} />
-            ) : (
-              <FontAwesomeIcon name={'pause'} size={30} color={'#fff'} />
-            )}
-          </TouchableOpacity>
 
-          <View style={styles.controlsWrapper}>
-            <View style={styles.flexRow}>
-              <Text style={styles.durationText}>{formatTime(currentTime)}</Text>
-              <Text style={styles.durationSeparator}>{'/'}</Text>
-              <Text style={[styles.durationText, styles.totalDurationText]}>
-                {formatTime(totalDuration)}
-              </Text>
-            </View>
-
-            <TouchableOpacity
-              activeOpacity={0.85}
-              onPress={handleToggleFullScreen}>
-              <MaterialCommunityIcon
-                name={isFullScreen ? 'fullscreen-exit' : 'fullscreen'}
-                size={18}
-                color={'#fff'}
-              />
-            </TouchableOpacity>
-          </View>
-        </TouchableOpacity>
+      {/* Controls */}
+      {showControls && (
+        <VideoPlayerControls
+          isPaused={isPaused}
+          isFullScreen={isFullScreen}
+          currentTime={currentTime}
+          totalDuration={totalDuration}
+          handleToggleControls={handleToggleControls}
+          handleBackward={handleBackward}
+          handlePlayPause={handlePlayPause}
+          handleForward={handleForward}
+          handleToggleFullScreen={handleToggleFullScreen}
+        />
       )}
+
+      {/* Slider */}
+      <View style={styles.sliderWrapper}>
+        <VideoSlider
+          showControls={showControls}
+          value={currentTime}
+          min={0}
+          max={totalDuration}
+          sliderLength={windowWidth}
+          onValuesChangeStart={onValuesChangeStart}
+          onValuesChangeFinish={onValuesChangeFinish}
+          enableOne={!isLoading}
+        />
+      </View>
     </View>
   );
 };

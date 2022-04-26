@@ -46,4 +46,13 @@ export const styles = StyleSheet.create({
     color: 'rgba(255,255,255, 0.7)',
     fontSize: 12,
   },
+  sliderWrapper: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
+  mainControlsWrapper: {
+    width: 220,
+    justifyContent: 'space-between',
+  },
 });
