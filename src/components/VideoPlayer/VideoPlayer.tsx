@@ -190,7 +190,7 @@ export const VideoPlayer = ({
           onLoad={handleLoaded}
           paused={isPaused}
           onProgress={onProgress}
-          onBuffer={() => console.log('buffering')}
+          onBuffer={e => console.log('buffering', e)}
           controls={false}
           onError={(err: any) => setError(err)}
           style={{width: '100%', height: '100%'}}
@@ -230,16 +230,18 @@ export const VideoPlayer = ({
       )}
 
       {/* Slider */}
-      <View style={styles.sliderWrapper}>
-        <VideoSlider
-          showControls={showControls}
-          value={currentTime}
-          min={0}
-          max={totalDuration}
-          onValuesChangeStart={onValuesChangeStart}
-          onValuesChangeFinish={onValuesChangeFinish}
-          disabled={isLoading}
-        />
+      <View style={[styles.sliderWrapper, {bottom: isFullScreen ? 10 : -11}]}>
+        {((showControls && isFullScreen) || !isFullScreen) && (
+          <VideoSlider
+            showControls={showControls}
+            value={currentTime}
+            min={0}
+            max={totalDuration}
+            onValuesChangeStart={onValuesChangeStart}
+            onValuesChangeFinish={onValuesChangeFinish}
+            disabled={isLoading}
+          />
+        )}
       </View>
     </View>
   );

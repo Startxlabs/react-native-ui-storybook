@@ -102,7 +102,8 @@ const VideoPlayerControls = ({
         </View>
 
         {/* Controls Footer */}
-        <View style={styles.controlsWrapper}>
+        <View
+          style={[styles.controlsWrapper, {bottom: isFullScreen ? 30 : 10}]}>
           <View style={styles.flexRow}>
             <Text style={styles.durationText}>{formatTime(currentTime)}</Text>
             <Text style={styles.durationSeparator}>{'/'}</Text>

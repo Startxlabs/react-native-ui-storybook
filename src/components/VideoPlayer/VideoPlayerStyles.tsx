@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   controlsWrapper: {
     position: 'absolute',
-    bottom: 5,
+    bottom: 10,
     width: '100%',
     height: 25,
     paddingHorizontal: 8,
