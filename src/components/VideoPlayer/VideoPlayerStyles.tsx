@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
   },
   sliderWrapper: {
     position: 'absolute',
-    bottom: 0,
+    bottom: -11,
     width: '100%',
   },
   mainControlsWrapper: {

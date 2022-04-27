@@ -116,18 +116,20 @@ const VideoPlayerControls = ({
           style={styles.modalStyle}>
           <View style={styles.playbackContainer}>
             {SPEED.map((item: number) => (
-              <View key={uuidv4()} style={styles.flexRow}>
+              <TouchableOpacity
+                key={uuidv4()}
+                style={styles.flexRow}
+                activeOpacity={0.85}
+                onPress={() => handlePlaybackSpeedChange(item)}>
                 <View style={{width: 40}}>
                   {item === activeSpeed && (
                     <Icon name={'checkmark'} size={20} color={'#000'} />
                   )}
                 </View>
-                <Text
-                  style={styles.playbackSpeedText}
-                  onPress={() => handlePlaybackSpeedChange(item)}>
+                <Text style={styles.playbackSpeedText}>
                   {item === 1 ? 'Normal' : `${item}x`}
                 </Text>
-              </View>
+              </TouchableOpacity>
             ))}
           </View>
         </Modal>

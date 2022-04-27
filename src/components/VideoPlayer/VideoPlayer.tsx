@@ -89,15 +89,16 @@ export const VideoPlayer = ({
   };
 
   // * pause video when sliding starts
-  const onValuesChangeStart = () => {
+  const onValuesChangeStart = (value: number) => {
+    setCurrentTime(value);
     setIsPaused(true);
   };
 
   // * update current time once sliding finishes
-  const onValuesChangeFinish = (range: Array<number>) => {
-    setCurrentTime(range[0]);
+  const onValuesChangeFinish = (value: number) => {
+    setCurrentTime(value);
     setIsPaused(false);
-    videoRef.current?.seek(range[0]);
+    videoRef.current?.seek(value);
   };
 
   // * backward ten seconds
@@ -203,10 +204,9 @@ export const VideoPlayer = ({
           value={currentTime}
           min={0}
           max={totalDuration}
-          sliderLength={windowWidth}
           onValuesChangeStart={onValuesChangeStart}
           onValuesChangeFinish={onValuesChangeFinish}
-          enableOne={!isLoading}
+          disabled={isLoading}
         />
       </View>
     </View>

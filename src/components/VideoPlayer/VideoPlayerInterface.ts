@@ -32,10 +32,9 @@ export interface VideoSliderI {
   value: number;
   min: number;
   max: number;
-  sliderLength?: number;
-  onValuesChangeStart?: () => void;
-  onValuesChangeFinish?: (range: Array<number>) => void;
-  enableOne?: boolean;
+  onValuesChangeStart?: (value: number) => void;
+  onValuesChangeFinish?: (value: number) => void;
+  disabled?: boolean;
 }
 
 export interface MoreSettingsI {
