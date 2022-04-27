@@ -193,7 +193,7 @@ export const VideoPlayer = ({
           onBuffer={e => console.log('buffering', e)}
           controls={false}
           onError={(err: any) => setError(err)}
-          style={{width: '100%', height: '100%'}}
+          style={styles.videoStyle}
           resizeMode={'cover'}
           fullscreenOrientation={'landscape'}
           rate={activeSpeed}
