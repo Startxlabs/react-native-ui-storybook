@@ -2,6 +2,7 @@ import { StyleProp, TextStyle, ViewStyle } from "react-native";
 
 export type inputStatusType = 'success' | 'error' | 'default';
 export interface InputI {
+  isFloating?: boolean;
   label?: string;
   disabled?: boolean;
   inputStatus?: inputStatusType;

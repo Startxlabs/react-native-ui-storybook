@@ -2,7 +2,7 @@ import React from 'react';
 import {TextStyle, Text, View} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {COLORS} from '../../constants/colors';
-import {inputStatusType} from '../../interfaces/InputInterface';
+import {inputStatusType} from './InputInterface';
 
 type InlineMessageProps = {
   message: string;
