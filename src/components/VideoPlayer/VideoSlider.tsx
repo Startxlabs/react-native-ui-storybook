@@ -23,9 +23,11 @@ const VideoSlider = ({
         disabled={disabled}
         style={styles.sliderContainer}
         thumbTintColor={showControls ? '#fff' : 'transparent'}
-        minimumTrackTintColor={value > 0 ? 'red' : 'rgba(255, 255, 255, 0.7)'}
+        minimumTrackTintColor={
+          value && value > 0 ? 'red' : 'rgba(255, 255, 255, 0.7)'
+        }
         maximumTrackTintColor={
-          value >= max ? 'red' : 'rgba(255, 255, 255, 0.7)'
+          value && value >= max ? 'red' : 'rgba(255, 255, 255, 0.7)'
         }
       />
     </View>

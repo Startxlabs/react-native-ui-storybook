@@ -34,20 +34,40 @@ const VideoPlayerControls = ({
     handleClosePlaybackModal,
     activeSpeed,
     handlePlaybackSpeed,
+    loop,
+    handleLoop,
   } = additionalControlProps;
 
+  // * toggle settings modal
   const handleSettings = (value: boolean) => {
     handleCloseSettingsModal(value);
   };
 
+  /**
+   * * close settings modal
+   * * and open playback modal
+   */
   const handlePlaybackModal = (value: boolean) => {
     handleSettings(false);
     handleClosePlaybackModal(value);
   };
 
+  /**
+   * * pass speed to callback
+   * * and close playback modal
+   */
   const handlePlaybackSpeedChange = (speed: number) => {
     handlePlaybackSpeed(speed);
     handleClosePlaybackModal(false);
+  };
+
+  /**
+   * * pass loop value to callback
+   * * and close settings modal
+   */
+  const handleToggleLoop = (value: boolean) => {
+    handleLoop(value);
+    handleSettings(false);
   };
 
   return (
@@ -102,13 +122,22 @@ const VideoPlayerControls = ({
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
+
+      {/* More settings modal */}
       {showSettings && (
         <MoreSettings
           showSettings={showSettings}
           onClose={() => handleSettings(false)}
-          handlePlaybackModal={handlePlaybackModal}
+          moreSettingsProps={{
+            activeSpeed,
+            handlePlaybackModal,
+            loop,
+            handleToggleLoop,
+          }}
         />
       )}
+
+      {/* Playback speed modal */}
       {showPlaybackModal && (
         <Modal
           isVisible={showPlaybackModal}

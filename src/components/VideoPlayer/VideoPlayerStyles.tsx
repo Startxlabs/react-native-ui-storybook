@@ -6,6 +6,13 @@ export const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  statusWrapper: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   fullScreenStyle: {
     position: 'absolute',
     width: '100%',

@@ -3,7 +3,7 @@ import { ViewStyle } from "react-native";
 export interface VideoPlayerI {
   videoSource: string;
   videoPlayerContainerStyles: ViewStyle;
-};
+}
 
 export interface AdditionalControlPropsI {
   handleBackward: () => void;
@@ -16,6 +16,8 @@ export interface AdditionalControlPropsI {
   handleClosePlaybackModal: (value: boolean) => void;
   activeSpeed: number;
   handlePlaybackSpeed: (speed: number) => void;
+  loop: boolean;
+  handleLoop: (value: boolean) => void;
 }
 
 export interface VideoPlayerControlsI {
@@ -37,8 +39,15 @@ export interface VideoSliderI {
   disabled?: boolean;
 }
 
+export interface MoreSettingsPropsI {
+  activeSpeed: number;
+  handlePlaybackModal: (value: boolean) => void;
+  loop: boolean;
+  handleToggleLoop: (value: boolean) => void;
+}
+
 export interface MoreSettingsI {
   showSettings?: boolean;
   onClose?: () => void;
-  handlePlaybackModal?: (value: boolean) => void;
+  moreSettingsProps: MoreSettingsPropsI
 }
