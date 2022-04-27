@@ -22,7 +22,7 @@ export interface AdditionalControlPropsI {
 
 export interface VideoPlayerControlsI {
   isPaused: boolean;
-  isFullScreen?: boolean;
+  isFullScreen: boolean;
   currentTime: number;
   totalDuration: number;
   handleToggleControls?: () => void;
@@ -44,6 +44,7 @@ export interface MoreSettingsPropsI {
   handlePlaybackModal: (value: boolean) => void;
   loop: boolean;
   handleToggleLoop: (value: boolean) => void;
+  isFullScreen: boolean;
 }
 
 export interface MoreSettingsI {

@@ -11,15 +11,24 @@ const MoreSettings = ({
   onClose,
   moreSettingsProps,
 }: MoreSettingsI) => {
-  const {activeSpeed, handlePlaybackModal, loop, handleToggleLoop} =
-    moreSettingsProps;
+  const {
+    activeSpeed,
+    handlePlaybackModal,
+    loop,
+    handleToggleLoop,
+    isFullScreen,
+  } = moreSettingsProps;
 
   return (
     <Modal
       isVisible={showSettings}
       onBackdropPress={onClose}
       style={styles.modalStyle}>
-      <View style={settingStyles.container}>
+      <View
+        style={[
+          settingStyles.container,
+          {paddingHorizontal: isFullScreen ? 30 : 5},
+        ]}>
         {/* Playback speed */}
         <TouchableOpacity
           style={styles.flexRow}

@@ -134,6 +134,7 @@ const VideoPlayerControls = ({
             handlePlaybackModal,
             loop,
             handleToggleLoop,
+            isFullScreen,
           }}
         />
       )}
@@ -144,7 +145,11 @@ const VideoPlayerControls = ({
           isVisible={showPlaybackModal}
           onBackdropPress={() => handlePlaybackModal(false)}
           style={styles.modalStyle}>
-          <View style={styles.playbackContainer}>
+          <View
+            style={[
+              styles.playbackContainer,
+              {paddingHorizontal: isFullScreen ? 50 : 20},
+            ]}>
             {SPEED.map((item: number) => (
               <TouchableOpacity
                 key={uuidv4()}

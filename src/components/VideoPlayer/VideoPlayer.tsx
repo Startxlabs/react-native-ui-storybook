@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import Video from 'react-native-video';
 import Orientation from 'react-native-orientation';
@@ -13,6 +13,7 @@ export const VideoPlayer = ({
   videoPlayerContainerStyles,
 }: VideoPlayerI) => {
   const videoRef = useRef<any>(null);
+  const controlsTimerRef = useRef<NodeJS.Timeout>();
 
   const TEN_SECONDS = 10;
   const [isLoading, setIsLoading] = useState(false);
@@ -63,20 +64,33 @@ export const VideoPlayer = ({
     setCurrentTime(currentTime);
   };
 
+  useEffect(() => {
+    /**
+     * * don't close controls overlay if
+     * * video is paused or settings
+     * * or playback modal is open
+     */
+    const shouldCloseControls =
+      !isPaused && !showSettings && !showPlaybackModal;
+
+    if (showControls && shouldCloseControls) {
+      controlsTimerRef.current = setTimeout(() => {
+        if (shouldCloseControls) {
+          setShowControls(false);
+        }
+      }, 5000);
+
+      return () => {
+        if (controlsTimerRef.current) {
+          clearTimeout(controlsTimerRef.current);
+        }
+      };
+    }
+  }, [showControls, isPaused]);
+
   // * toggle video controls
   const handleToggleControls = () => {
-    if (showControls) {
-      setShowControls(false);
-    } else {
-      setShowControls(true);
-      if (!isPaused && !showSettings && !showPlaybackModal) {
-        setTimeout(() => {
-          if (!showSettings && !showPlaybackModal) {
-            setShowControls(false);
-          }
-        }, 5000);
-      }
-    }
+    setShowControls(!showControls);
   };
 
   //* toggle fullscreen view
