@@ -1,4 +1,4 @@
-import { ViewStyle } from "react-native";
+import { Animated, ViewStyle } from "react-native";
 
 
 export interface ControlIconsI {
@@ -41,11 +41,11 @@ export interface VideoPlayerControlsI {
 
 export interface VideoSliderI {
   showControls?: boolean;
-  value: number;
+  value: Animated.Value | number | Array<number>;
   min: number;
   max: number;
-  onValuesChangeStart?: (value: number) => void;
-  onValuesChangeFinish?: (value: number) => void;
+  onValuesChangeStart?: (value: number | Array<number>) => void;
+  onValuesChangeFinish?: (value: number | Array<number>) => void;
   disabled?: boolean;
 }
 

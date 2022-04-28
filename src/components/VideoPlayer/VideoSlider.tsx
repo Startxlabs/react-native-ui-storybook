@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import Slider from '@react-native-community/slider';
+import {Slider} from '@miblanchard/react-native-slider';
 import {VideoSliderI} from './VideoPlayerInterface';
 
 const VideoSlider = ({
@@ -15,17 +15,31 @@ const VideoSlider = ({
   return (
     <View>
       <Slider
+        step={1}
         value={value}
         minimumValue={min}
         maximumValue={max}
         onSlidingStart={onValuesChangeStart}
         onSlidingComplete={onValuesChangeFinish}
         disabled={disabled}
-        style={styles.sliderContainer}
-        thumbTintColor={showControls ? '#fff' : 'transparent'}
-        minimumTrackTintColor={
-          value && value > 0 ? 'red' : 'rgba(255, 255, 255, 0.7)'
+        renderThumbComponent={() =>
+          showControls ? (
+            <View
+              style={{
+                width: 20,
+                height: 20,
+                backgroundColor: 'white',
+                borderRadius: 10,
+              }}
+            />
+          ) : (
+            <></>
+          )
         }
+        thumbTintColor={showControls ? '#fff' : 'transparent'}
+        containerStyle={styles.sliderContainer}
+        animationType={'timing'}
+        minimumTrackTintColor={'red'}
         maximumTrackTintColor={
           value && value >= max ? 'red' : 'rgba(255, 255, 255, 0.7)'
         }
@@ -39,11 +53,5 @@ export default VideoSlider;
 const styles = StyleSheet.create({
   sliderContainer: {
     height: 25,
-  },
-  selectedStyle: {
-    backgroundColor: 'red',
-  },
-  trackStyle: {
-    backgroundColor: 'rgba(255, 255, 255, 0.7)',
   },
 });
