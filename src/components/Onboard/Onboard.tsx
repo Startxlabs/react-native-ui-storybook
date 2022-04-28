@@ -10,13 +10,11 @@ export const Onboard = ({
   renderSlides,
   slides = [],
   sliderContainerStyle,
-  sliderTextStyle,
   defaultText,
   defaultTextStyle,
   renderPagination,
   paginationStyle,
-  button,
-  loginOption,
+  footer,
 }: OnboardI) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
@@ -49,36 +47,7 @@ export const Onboard = ({
           disableIntervalMomentum
           snapToInterval={windowWidth}
           snapToAlignment={'center'}>
-          {renderSlides
-            ? renderSlides()
-            : slides.length > 0 &&
-              slides.map(slide => (
-                <View
-                  key={uuidv4()}
-                  style={[
-                    styles.slideStyle,
-                    {
-                      width: windowWidth,
-                      paddingHorizontal: 40,
-                    },
-                  ]}>
-                  <Image
-                    source={slide.image}
-                    style={{width: '100%', height: '80%'}}
-                  />
-                  <View
-                    style={{
-                      justifyContent: 'center',
-                      height: '20%',
-                    }}>
-                    <Text
-                      allowFontScaling={false}
-                      style={[styles.sliderText, sliderTextStyle]}>
-                      {slide.slideText}
-                    </Text>
-                  </View>
-                </View>
-              ))}
+          {renderSlides?.()}
         </ScrollView>
       </View>
 
@@ -102,10 +71,7 @@ export const Onboard = ({
             ))}
       </View>
 
-      <View style={styles.footerWrapper}>
-        {button?.()}
-        {loginOption?.()}
-      </View>
+      <View style={styles.footerWrapper}>{footer?.()}</View>
     </View>
   );
 };

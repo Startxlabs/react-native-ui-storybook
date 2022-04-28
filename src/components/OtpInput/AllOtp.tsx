@@ -4,21 +4,23 @@ import {v4 as uuidv4} from 'uuid';
 import {OtpInput} from '.';
 import {OtpI} from './OtpInputInterface';
 
-export const AllOtp = ({inputStatusType, onSubmit}: OtpI) => {
+export const AllOtp = ({
+  inputStatusType = 'default',
+  numberOfInputs = 6,
+  onSubmit,
+}: OtpI) => {
   const otpInputRef: Array<RefObject<any>> = [
-    useRef<TextInput>(),
-    useRef<TextInput>(),
-    useRef<TextInput>(),
-    useRef<TextInput>(),
-    useRef<TextInput>(),
-    useRef<TextInput>(),
+    ...Array(numberOfInputs).fill(useRef<TextInput>()),
   ];
 
-  const [otp, setOtp] = useState(['', '', '', '', '', '']);
+  const [otp, setOtp] = useState([...Array(numberOfInputs).fill('')]);
 
   useEffect(() => {
     if (onSubmit) {
-      onSubmit(otp);
+      const isFilled = otp.every(item => item.length > 0);
+      if (isFilled) {
+        onSubmit(otp);
+      }
     }
   }, [otp]);
 
@@ -29,7 +31,7 @@ export const AllOtp = ({inputStatusType, onSubmit}: OtpI) => {
 
     if (text.length > 0) {
       switch (index) {
-        case 5:
+        case numberOfInputs - 1:
           Keyboard.dismiss();
           break;
         case index:
@@ -41,7 +43,7 @@ export const AllOtp = ({inputStatusType, onSubmit}: OtpI) => {
 
   const handleJumpCursor = (index: number, direction: string) => {
     if (index === 0 && direction === 'prev') return;
-    if (index === 5 && direction === 'next') return;
+    if (index === numberOfInputs - 1 && direction === 'next') return;
 
     switch (direction) {
       case 'next':

@@ -6,7 +6,8 @@
 - [Installation](#installation)
 - [Components](#components)
   - [Button](#button)
-  - [Checkbox and Radio](#checkbox-and-radio)
+  - [Checkbox](#checkbox)
+  - [Radio](#radio)
   - [Input](#input)
   - [Onboard](#onboard)
   - [Otp Input](#otp-input)
@@ -37,31 +38,32 @@ Component library built using Storybook. Storybook is an open source tool for bu
 ```
   <Button
     text={'Custom Button'}
-    bgColor={'#fff'}
-    borderColor={'crimson'}
-    textColor={'#0D0113'}
-    handlePress={() => {}}
+    buttonContainerStyle={{
+      backgroundColor: '#fff',
+      borderColor: 'crimson',
+    }}
+    buttonTextStyle={{
+      color: '#0D0113',
+    }}
   />
 ```
 
 #### Props
 
-| Prop        | Type     | Optional | Default   | Description                    |
-| ----------- | -------- | -------- | --------- | ------------------------------ |
-| text        | string   | No       | 'Button'  | Button text                    |
-| disabled    | bool     | Yes      | false     | Disabled button                |
-| bgColor     | string   | Yes      | '#0D0113' | Background color of the button |
-| borderColor | string   | Yes      | '#0D0113' | Border color of the button     |
-| textColor   | string   | Yes      | '#fff'    | Button text color              |
-| handlePress | function | Yes      |           | Handle button press            |
+| Prop                 | Type      | Optional | Default  | Description                |
+| -------------------- | --------- | -------- | -------- | -------------------------- |
+| text                 | string    | No       | 'Button' | Button text                |
+| disabled             | bool      | Yes      | false    | Disabled button            |
+| buttonContainerStyle | ViewStyle | Yes      | {}       | Container style for button |
+| buttonTextStyle      | TextStyle | Yes      | {}       | Text style for button      |
+| handlePress          | function  | Yes      |          | Handle button press        |
 
-### Checkbox and Radio
+### Checkbox
 
 #### Usage
 
 ```
   <Checkbox
-    variant={'circle'}
     value={false}
     handleChange={() => {}}
     checkboxStyle={{}}
@@ -71,13 +73,34 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 #### Props
 
-| Prop          | Type                | Optional | Default  | Description              |
-| ------------- | ------------------- | -------- | -------- | ------------------------ |
-| variant       | 'square'\| 'circle' | Yes      | 'square' | Checkbox or radio        |
-| value         | bool                | No       |          | Default status           |
-| checkboxStyle | ViewStyle           | Yes      | {}       | Checkbox container style |
-| hasGradient   | bool                | Yes      | false    | Gradient background      |
-| handleChange  | function            | Yes      |          | Handle checkbox press    |
+| Prop          | Type      | Optional | Default | Description              |
+| ------------- | --------- | -------- | ------- | ------------------------ |
+| value         | bool      | No       |         | Default status           |
+| checkboxStyle | ViewStyle | Yes      | {}      | Checkbox container style |
+| hasGradient   | bool      | Yes      | false   | Gradient background      |
+| handleChange  | function  | Yes      |         | Handle checkbox press    |
+
+### Radio
+
+#### Usage
+
+```
+  <Radio
+    value={false}
+    handleChange={() => {}}
+    radioStyle={{}}
+    hasGradient={true}
+  />
+```
+
+#### Props
+
+| Prop         | Type      | Optional | Default | Description           |
+| ------------ | --------- | -------- | ------- | --------------------- |
+| value        | bool      | No       |         | Default status        |
+| radioStyle   | ViewStyle | Yes      | {}      | Radio container style |
+| hasGradient  | bool      | Yes      | false   | Gradient background   |
+| handleChange | function  | Yes      |         | Handle radio press    |
 
 ### Input
 
@@ -103,76 +126,122 @@ Component library built using Storybook. Storybook is an open source tool for bu
 
 #### Props
 
-| Prop                | Type                              | Optional | Default | Description                              |
-| ------------------- | --------------------------------- | -------- | ------- | ---------------------------------------- |
-| label               | string                            | Yes      |         | Label for floating input                 |
-| disabled            | bool                              | Yes      |         | Input disabled                           |
-| inputType           | string                            | Yes      |         | Keyboard input type                      |
-| inputStatus         | 'success' \| 'error' \| 'default' | Yes      |         | Border color change as per Input status  |
-| inputContainerStyle | ViewStyle                         | Yes      |         | Additional Input container style         |
-| inputTextStyle      | TextStyle                         | Yes      |         | Additional Input Text style              |
-| message             | string                            | Yes      |         | Message below Input field for validation |
-| onFocus             | function                          | Yes      |         | Handle Input onFocus                     |
-| textInputProps      | object                            | Yes      |         | Additional Text Input props              |
-| hasMessageIcon      | bool                              | Yes      | true    | Whether to show icon for message         |
-| isMessageRight      | bool                              | Yes      | false   | Align message to left or right           |
+| Prop                | Type                              | Optional | Default | Description                                                 |
+| ------------------- | --------------------------------- | -------- | ------- | ----------------------------------------------------------- |
+| label               | string                            | Yes      |         | Label for floating input                                    |
+| showLabel           | bool                              | Yes      | false   | Show label on top of input field                            |
+| labelTextStyle      | TextStyle                         | Yes      | {}      | Additional Text style for label shown on top of input field |
+| disabled            | bool                              | Yes      |         | Input disabled                                              |
+| inputType           | string                            | Yes      |         | Keyboard input type                                         |
+| inputStatus         | 'success' \| 'error' \| 'default' | Yes      |         | Border color change as per Input status                     |
+| inputContainerStyle | ViewStyle                         | Yes      |         | Additional Input container style                            |
+| inputTextStyle      | TextStyle                         | Yes      |         | Additional Input Text style                                 |
+| message             | string                            | Yes      |         | Message below Input field for validation                    |
+| onFocus             | function                          | Yes      |         | Handle Input onFocus                                        |
+| textInputProps      | object                            | Yes      |         | Additional Text Input props                                 |
+| hasMessageIcon      | bool                              | Yes      | true    | Whether to show icon for message                            |
+| isMessageRight      | bool                              | Yes      | false   | Align message to left or right                              |
 
 ### Onboard
 
 #### Usage
 
 ```
+  // * slide data
+  const slidesData = [
+    {
+      image: 'https://picsum.photos/id/200/200/300',
+      slideTitle: 'Sell Houses',
+      slideBody:
+        'Sell houses easily with the help of\nListenoryx and to make this line\nbig I am writing more.',
+    },
+    {
+      image: 'https://picsum.photos/id/208/200/300',
+      slideTitle: 'We Warn You',
+      slideBody:
+        'We warn you whether to put your\nmoney on certain companies or\nnot because we care for you.',
+    },
+    {
+      image: 'https://picsum.photos/id/209/200/300',
+      slideTitle: 'Broker Relationship',
+      slideBody:
+        'Our brokers are good, nice and\nfriendly. We bet you, you feel\nhappy after meeting your broker.',
+    },
+  ];
+
   <Onboard
     logo={() => (
       <View
         style={{
           marginTop: EStyleSheet.value('3rem'),
-          marginBottom: EStyleSheet.value('4rem'),
+          marginBottom: EStyleSheet.value('2rem'),
         }}>
-        <Text>Logo</Text>
+        <Image source={logo} />
       </View>
     )}
-    slides={[
-      {
-        image: 'https://picsum.photos/id/10/300',
-        slideText: 'Instant Member Pricing &\nSpecial Offers',
-      },
-      {
-        image: 'https://picsum.photos/id/12/300',
-        slideText: 'Be Rewarded with Special\nOffers and Birthday Bonuses',
-      },
-      {
-        image: 'https://picsum.photos/id/20/300',
-        slideText: 'Join Reward me',
-      },
-    ]}
-    sliderContainerStyle={{height: '55%'}}
-    sliderTextStyle={{lineHeight: 25}}
-    defaultText={
-      'Sign in or create your account to start\nreceiving amazing benefits.'
+    slides={slidesData}
+    // * render custom slides
+    renderSlides={() =>
+      slidesData.length > 0 &&
+      slidesData.map(slide => (
+        <View
+          key={uuidv4()}
+          style={[
+            styles.slideStyle,
+            {
+              width: windowWidth,
+              paddingHorizontal: 20,
+            },
+          ]}>
+          <Image
+            source={slide.image}
+            style={{width: '100%', height: '65%'}}
+          />
+          <View
+            style={{
+              justifyContent: 'center',
+              height: '35%',
+            }}>
+            <Text
+              allowFontScaling={false}
+              style={[styles.sliderText, slideTitleStyle]}>
+              {slide.slideTitle}
+            </Text>
+            <Text style={slideBodyStyle}>{slide.slideBody}</Text>
+          </View>
+        </View>
+      ))
     }
-    defaultTextStyle={{
-      lineHeight: 20,
-      marginTop: 5,
-      marginBottom: 20,
-    }}
-    // renderPagination={() => {}}
-    // paginationStyle={{position: 'absolute', top: 105, right: 38}}
-    button={() => (
-      <View style={{marginBottom: 25}}>
-        <Button text={'Join Now'} />
-      </View>
-    )}
-    loginOption={() => (
-      <View style={{flexDirection: 'row'}}>
-        <Text>Already a Member? </Text>
-        <Text
-          style={{
-            fontWeight: '600',
-            textDecorationLine: 'underline',
-          }}>
-          Login
-        </Text>
+    sliderContainerStyle={{height: '60%'}}
+    // * render custom pagination
+    renderPagination={(slideIndex: number) =>
+      slidesData.length > 0 &&
+      slidesData.map((_, index) => (
+        <View key={uuidv4()}>
+          <View style={{marginHorizontal: 3}}>
+            <Image source={index === slideIndex ? dotActive : dotInactive} />
+          </View>
+        </View>
+      ))
+    }
+    // * render custom footer
+    footer={() => (
+      <View style={{marginBottom: 35}}>
+        <Button
+          text={'Get Started'}
+          buttonContainerStyle={{
+            width: 208,
+            height: 58,
+            borderRadius: 12,
+            backgroundColor: '#87B8B5',
+            borderColor: '#87B8B5',
+          }}
+          buttonTextStyle={{
+            fontSize: 21,
+            fontWeight: '700',
+            color: '#FFFFFF',
+          }}
+        />
       </View>
     )}
   />
@@ -185,42 +254,31 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | logo                 | function                                 | Yes      |         | Render custom logo (JSX)                           |
 | slides               | [{ image: any, slideText: string } ... ] | No       | []      | Slide array to display                             |
 | sliderContainerStyle | ViewStyle                                | Yes      |         | Additional slider container style                  |
-| sliderTextStyle      | TextStyle                                | Yes      |         | Additional slider text style                       |
 | defaultText          | string                                   | Yes      |         | Default text below slider                          |
 | defaultTextStyle     | TextStyle                                | Yes      |         | Additional default text style                      |
 | renderPagination     | function                                 | Yes      |         | Function to render Custom Pagination (JSX)         |
 | paginationStyle      | ViewStyle                                | Yes      |         | Additional pagination style for default pagination |
-| button               | function                                 | Yes      |         | Function to render custom CTA button(JSX)          |
-| loginOption          | function                                 | Yes      |         | Function to render custom login option(JSX)        |
+| footer               | function                                 | Yes      |         | Function to render Custom footer (JSX)             |
 
 ### Otp Input
 
 #### Usage
 
 ```
-  <OtpInput
-    key={uuidv4()}
-    ref={ref}
-    value={item.toString()}
-    textInputFocus={() => {}}
-    textInputBlur={() => {}}
-    onChangeText={(text) => handleChange(index, text)}
-    onSubmitEditing={() => handleJumpCursor(index, "next")}
-    onKeyPress={(nativeEvent) => goBack(index)}
+  <AllOtp
+    inputStatusType="default"
+    numberOfInputs={4}
+    onSubmit={(otp) => {}}
   />
 ```
 
 #### Props
 
-| Prop            | Type                              | Optional | Default   | Description                                 |
-| --------------- | --------------------------------- | -------- | --------- | ------------------------------------------- |
-| value           | string                            | No       |           | Otp input value                             |
-| textInputFocus  | function                          | No       |           | Function to handle otp input focus          |
-| textInputBlur   | function                          | No       |           | Function to handle otp input blur           |
-| onSubmitEditing | function                          | Yes      |           | Function to handle otp text submit          |
-| onChangeText    | function                          | Yes      |           | Handle otp input text change                |
-| onKeyPress      | function                          | Yes      |           | Handle Keyboard key press                   |
-| inputStatusType | "success" \| "error" \| "default" | Yes      | 'default' | Otp input border change as per input status |
+| Prop            | Type                              | Optional | Default   | Description                                  |
+| --------------- | --------------------------------- | -------- | --------- | -------------------------------------------- |
+| inputStatusType | "success" \| "error" \| "default" | Yes      | 'default' | Otp input status for validation              |
+| numberOfInputs  | number                            | Yes      | 6         | Number of otp input fields                   |
+| onSubmit        | (otp: Array<string>) => void      | Yes      |           | Handle otp values once all fields are filled |
 
 ### Swipe to delete
 

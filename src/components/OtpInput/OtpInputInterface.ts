@@ -11,5 +11,6 @@ export interface OtpInputI {
 
 export interface OtpI {
 	inputStatusType?: otpInputStatusType;
+	numberOfInputs?: number;
 	onSubmit?: (otp: Array<string>) => void;
 };

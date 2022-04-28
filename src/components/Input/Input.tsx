@@ -16,6 +16,8 @@ import {styles} from './InputStyles';
 export const Input = forwardRef<HTMLInputElement, InputI>(
   (
     {
+      showLabel = false,
+      labelTextStyle = {},
       isFloating = false,
       label,
       disabled,
@@ -75,6 +77,13 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
       case KEYBOARD_TYPE.PASSWORD_TYPE:
         return (
           <View style={styles.root}>
+            {showLabel ? (
+              <Text style={[styles.labelTextStyle, labelTextStyle]}>
+                {label}
+              </Text>
+            ) : (
+              <></>
+            )}
             <View
               style={[styles.inputContainer, inputContainerStyle, borderColor]}>
               {isFloating && label && label?.length > 0 ? (
@@ -89,7 +98,7 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                 secureTextEntry={secret}
                 {...textInputProps}
                 placeholder={
-                  isFloating && label && label.length > 0
+                  showLabel || (isFloating && label && label.length > 0)
                     ? ''
                     : textInputProps?.placeholder
                 }
@@ -127,6 +136,13 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
 
         return (
           <View style={styles.root}>
+            {showLabel ? (
+              <Text style={[styles.labelTextStyle, labelTextStyle]}>
+                {label}
+              </Text>
+            ) : (
+              <></>
+            )}
             <View
               style={[
                 styles.inputContainer,
@@ -170,7 +186,7 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                 ]}
                 {...textInputProps}
                 placeholder={
-                  isFloating && label && label.length > 0
+                  showLabel || (isFloating && label && label.length > 0)
                     ? ''
                     : textInputProps?.placeholder
                 }
