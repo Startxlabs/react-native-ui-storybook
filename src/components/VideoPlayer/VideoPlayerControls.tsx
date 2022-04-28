@@ -70,6 +70,41 @@ const VideoPlayerControls = ({
     handleSettings(false);
   };
 
+  // * returns play icon
+  const getPlayIcon = () => {
+    if (additionalControlProps?.controlIcons?.playIcon) {
+      return additionalControlProps.controlIcons.playIcon();
+    } else {
+      return <Icon name={'play'} size={50} color={'#fff'} />;
+    }
+  };
+
+  // * returns pause icon
+  const getPauseIcon = () => {
+    if (additionalControlProps?.controlIcons?.pauseIcon) {
+      return additionalControlProps.controlIcons.pauseIcon();
+    } else {
+      return <FontAwesomeIcon name={'pause'} size={40} color={'#fff'} />;
+    }
+  };
+
+  // * returns backward icon
+  const getBackwardIcon = () => {
+    if (additionalControlProps?.controlIcons?.backwardIcon) {
+      return additionalControlProps.controlIcons.backwardIcon();
+    } else {
+      return <Icon name={'play-back'} size={30} color={'#fff'} />;
+    }
+  };
+  // * returns forward icon
+  const getForwardIcon = () => {
+    if (additionalControlProps?.controlIcons?.forwardIcon) {
+      return additionalControlProps.controlIcons.forwardIcon();
+    } else {
+      return <Icon name={'play-forward'} size={30} color={'#fff'} />;
+    }
+  };
+
   return (
     <>
       <TouchableOpacity
@@ -87,17 +122,13 @@ const VideoPlayerControls = ({
         {/* Controls Middle */}
         <View style={[styles.flexRow, styles.mainControlsWrapper]}>
           <TouchableOpacity onPress={handleBackward} activeOpacity={0.85}>
-            <Icon name={'play-back'} size={30} color={'#fff'} />
+            {getBackwardIcon()}
           </TouchableOpacity>
           <TouchableOpacity onPress={handlePlayPause} activeOpacity={0.85}>
-            {isPaused ? (
-              <Icon name={'play'} size={50} color={'#fff'} />
-            ) : (
-              <FontAwesomeIcon name={'pause'} size={40} color={'#fff'} />
-            )}
+            {isPaused ? getPlayIcon() : getPauseIcon()}
           </TouchableOpacity>
           <TouchableOpacity onPress={handleForward} activeOpacity={0.85}>
-            <Icon name={'play-forward'} size={30} color={'#fff'} />
+            {getForwardIcon()}
           </TouchableOpacity>
         </View>
 

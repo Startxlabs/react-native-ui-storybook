@@ -11,6 +11,7 @@ import VideoPlayerControls from './VideoPlayerControls';
 export const VideoPlayer = ({
   videoSource,
   videoPlayerContainerStyles,
+  controlIcons,
 }: VideoPlayerI) => {
   const videoRef = useRef<any>(null);
   const controlsTimerRef = useRef<NodeJS.Timeout>();
@@ -225,6 +226,7 @@ export const VideoPlayer = ({
           totalDuration={totalDuration}
           handleToggleControls={handleToggleControls}
           additionalControlProps={{
+            controlIcons,
             handleBackward,
             handlePlayPause,
             handleForward,

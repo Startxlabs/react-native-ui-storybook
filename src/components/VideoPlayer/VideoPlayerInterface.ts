@@ -1,8 +1,17 @@
 import { ViewStyle } from "react-native";
 
+
+export interface ControlIconsI {
+  playIcon?: Function;
+  pauseIcon?: Function;
+  backwardIcon?: Function;
+  forwardIcon?: Function;
+}
+
 export interface VideoPlayerI {
   videoSource: string;
   videoPlayerContainerStyles: ViewStyle;
+  controlIcons?: ControlIconsI
 }
 
 export interface AdditionalControlPropsI {
@@ -18,6 +27,7 @@ export interface AdditionalControlPropsI {
   handlePlaybackSpeed: (speed: number) => void;
   loop: boolean;
   handleLoop: (value: boolean) => void;
+  controlIcons?: ControlIconsI;
 }
 
 export interface VideoPlayerControlsI {
