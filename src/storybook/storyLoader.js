@@ -4,6 +4,7 @@
 // https://github.com/elderfo/react-native-storybook-loader.git
 
 function loadStories() {
+  require('./stories/BottomSheet/BottomSheet.stories');
   require('./stories/Button/Button.stories');
   require('./stories/Checkbox/Checkbox.stories');
   require('./stories/CustomImage/CustomImage.stories');
@@ -19,6 +20,7 @@ function loadStories() {
 }
 
 const stories = [
+  './stories/BottomSheet/BottomSheet.stories',
   './stories/Button/Button.stories',
   './stories/Checkbox/Checkbox.stories',
   './stories/CustomImage/CustomImage.stories',
