@@ -11,7 +11,46 @@ const VideoSlider = ({
   onValuesChangeStart,
   onValuesChangeFinish,
   disabled,
+  isBigThumb,
+  customThumbComponent,
+  customTrackStyle = {
+    trackStyle: {height: 2, borderRadius: 0},
+    minimumTrackTintColor: 'red',
+    maximumTrackTintColor: 'rgba(255, 255, 255, 0.7)',
+  },
 }: VideoSliderI) => {
+  // * custom thumb component
+  const getThumbComponent = () => {
+    return showControls ? (
+      customThumbComponent ? (
+        customThumbComponent(isBigThumb)
+      ) : (
+        <View
+          style={{
+            width: isBigThumb ? 20 : 14,
+            height: isBigThumb ? 20 : 14,
+            backgroundColor: 'red',
+            borderRadius: 30,
+          }}
+        />
+      )
+    ) : (
+      <></>
+    );
+  };
+
+  // * custom minimum track color
+  const getMinimumTrackTintColor = () => {
+    return customTrackStyle.minimumTrackTintColor;
+  };
+
+  // * custom maximum track color
+  const getMaximumTrackTintColor = () => {
+    if (value && value >= max) {
+      return customTrackStyle?.maximumTrackTintColor;
+    }
+  };
+
   return (
     <View>
       <Slider
@@ -22,27 +61,13 @@ const VideoSlider = ({
         onSlidingStart={onValuesChangeStart}
         onSlidingComplete={onValuesChangeFinish}
         disabled={disabled}
-        renderThumbComponent={() =>
-          showControls ? (
-            <View
-              style={{
-                width: 20,
-                height: 20,
-                backgroundColor: 'white',
-                borderRadius: 10,
-              }}
-            />
-          ) : (
-            <></>
-          )
-        }
+        renderThumbComponent={getThumbComponent}
         thumbTintColor={showControls ? '#fff' : 'transparent'}
         containerStyle={styles.sliderContainer}
         animationType={'timing'}
-        minimumTrackTintColor={'red'}
-        maximumTrackTintColor={
-          value && value >= max ? 'red' : 'rgba(255, 255, 255, 0.7)'
-        }
+        minimumTrackTintColor={getMinimumTrackTintColor()}
+        maximumTrackTintColor={getMaximumTrackTintColor()}
+        trackStyle={customTrackStyle?.trackStyle}
       />
     </View>
   );

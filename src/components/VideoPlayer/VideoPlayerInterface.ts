@@ -8,10 +8,19 @@ export interface ControlIconsI {
   forwardIcon?: Function;
 }
 
+export interface CustomTrackStylePropsI {
+  trackStyle?: ViewStyle;
+  minimumTrackTintColor?: string;
+  maximumTrackTintColor?: string;
+}
+
 export interface VideoPlayerI {
   videoSource: string;
   videoPlayerContainerStyles: ViewStyle;
-  controlIcons?: ControlIconsI
+  controlIcons?: ControlIconsI;
+  sliderWrapperStyle?: (isFullScreen?: boolean) => ViewStyle;
+  customThumbComponent?: (isBigThumb?: boolean) => JSX.Element;
+  customTrackStyle?: CustomTrackStylePropsI;
 }
 
 export interface AdditionalControlPropsI {
@@ -47,6 +56,9 @@ export interface VideoSliderI {
   onValuesChangeStart?: (value: number | Array<number>) => void;
   onValuesChangeFinish?: (value: number | Array<number>) => void;
   disabled?: boolean;
+  isBigThumb?: boolean;
+  customThumbComponent?: (isBigThumb?: boolean) => JSX.Element;
+  customTrackStyle?: CustomTrackStylePropsI;
 }
 
 export interface MoreSettingsPropsI {

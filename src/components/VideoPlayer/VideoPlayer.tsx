@@ -12,6 +12,9 @@ export const VideoPlayer = ({
   videoSource,
   videoPlayerContainerStyles,
   controlIcons,
+  sliderWrapperStyle,
+  customThumbComponent,
+  customTrackStyle,
 }: VideoPlayerI) => {
   const videoRef = useRef<any>(null);
   const controlsTimerRef = useRef<NodeJS.Timeout>();
@@ -28,6 +31,7 @@ export const VideoPlayer = ({
   const [showPlaybackModal, setShowPlaybackModal] = useState(false);
   const [activeSpeed, setActiveSpeed] = useState(1);
   const [loop, setLoop] = useState(false);
+  const [isBigThumb, setIsBigThumb] = useState(false);
 
   // * video load start
   const handleLoadingStart = () => {
@@ -112,6 +116,7 @@ export const VideoPlayer = ({
   const onValuesChangeStart = (value: any) => {
     setCurrentTime(value[0]);
     setIsPaused(true);
+    setIsBigThumb(true);
   };
 
   // * update current time once sliding finishes
@@ -119,6 +124,7 @@ export const VideoPlayer = ({
     const finishAt = Math.floor(value[0]);
     setCurrentTime(finishAt);
     setIsPaused(false);
+    setIsBigThumb(false);
     videoRef.current?.seek(finishAt);
   };
 
@@ -168,6 +174,15 @@ export const VideoPlayer = ({
       setTimeout(() => {
         videoRef.current?.seek(0);
       }, 1000);
+    }
+  };
+
+  // * custom slider wrapper styles
+  const getSliderWrapperStyle = () => {
+    if (sliderWrapperStyle) {
+      return sliderWrapperStyle(isFullScreen);
+    } else {
+      return {bottom: isFullScreen ? 10 : -12};
     }
   };
 
@@ -247,7 +262,7 @@ export const VideoPlayer = ({
       )}
 
       {/* Slider */}
-      <View style={[styles.sliderWrapper, {bottom: isFullScreen ? 10 : -11}]}>
+      <View style={[styles.sliderWrapper, getSliderWrapperStyle()]}>
         {((showControls && isFullScreen) || !isFullScreen) && (
           <VideoSlider
             showControls={showControls}
@@ -257,6 +272,9 @@ export const VideoPlayer = ({
             onValuesChangeStart={onValuesChangeStart}
             onValuesChangeFinish={onValuesChangeFinish}
             disabled={isLoading}
+            isBigThumb={isBigThumb}
+            customThumbComponent={customThumbComponent}
+            customTrackStyle={customTrackStyle}
           />
         )}
       </View>

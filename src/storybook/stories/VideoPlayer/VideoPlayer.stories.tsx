@@ -43,6 +43,24 @@ storiesOf('VideoPlayer', module)
               <Icon name={'play-forward-outline'} size={30} color={'#fff'} />
             ),
           }}
+          customThumbComponent={isBigThumb => (
+            <View
+              style={{
+                width: isBigThumb ? 25 : 19,
+                height: isBigThumb ? 25 : 19,
+                backgroundColor: '#4d4dff',
+                borderRadius: 50,
+              }}
+            />
+          )}
+          sliderWrapperStyle={isFullScreen => ({
+            bottom: isFullScreen ? 10 : -11,
+          })}
+          customTrackStyle={{
+            trackStyle: {height: 4, backgroundColor: '#ddd', borderRadius: 0},
+            minimumTrackTintColor: '#4d4dff',
+            maximumTrackTintColor: '#ddd',
+          }}
         />
       </View>
     );
