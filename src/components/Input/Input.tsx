@@ -8,7 +8,7 @@ import Animated, {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {COLORS} from '../../constants/colors';
 import {KEYBOARD_TYPE} from '../../enums/emuns';
-import {InputI} from '../../interfaces/InputInterface';
+import {InputI} from './InputInterface';
 import {getDefaultInputProps} from '../../utils/globalFunctions';
 import InlineMessage from './InlineMessage';
 import {styles} from './InputStyles';
@@ -16,6 +16,9 @@ import {styles} from './InputStyles';
 export const Input = forwardRef<HTMLInputElement, InputI>(
   (
     {
+      showLabel = false,
+      labelTextStyle = {},
+      isFloating = false,
       label,
       disabled,
       inputType,
@@ -74,9 +77,16 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
       case KEYBOARD_TYPE.PASSWORD_TYPE:
         return (
           <View style={styles.root}>
+            {showLabel ? (
+              <Text style={[styles.labelTextStyle, labelTextStyle]}>
+                {label}
+              </Text>
+            ) : (
+              <></>
+            )}
             <View
               style={[styles.inputContainer, inputContainerStyle, borderColor]}>
-              {label && label?.length > 0 ? (
+              {isFloating && label && label?.length > 0 ? (
                 <Animated.Text style={[labelAnimatedStyles, styles.labelStyle]}>
                   {label}
                 </Animated.Text>
@@ -88,7 +98,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                 secureTextEntry={secret}
                 {...textInputProps}
                 placeholder={
-                  label && label.length > 0 ? '' : textInputProps?.placeholder
+                  showLabel || (isFloating && label && label.length > 0)
+                    ? ''
+                    : textInputProps?.placeholder
                 }
                 onFocus={() => {
                   onFocus?.();
@@ -124,6 +136,13 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
 
         return (
           <View style={styles.root}>
+            {showLabel ? (
+              <Text style={[styles.labelTextStyle, labelTextStyle]}>
+                {label}
+              </Text>
+            ) : (
+              <></>
+            )}
             <View
               style={[
                 styles.inputContainer,
@@ -149,7 +168,7 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                   <View style={styles.line} />
                 </TouchableOpacity>
               )}
-              {label && label?.length > 0 ? (
+              {isFloating && label && label?.length > 0 ? (
                 <Animated.Text style={[labelAnimatedStyles, styles.labelStyle]}>
                   {label}
                 </Animated.Text>
@@ -167,7 +186,9 @@ export const Input = forwardRef<HTMLInputElement, InputI>(
                 ]}
                 {...textInputProps}
                 placeholder={
-                  label && label.length > 0 ? '' : textInputProps?.placeholder
+                  showLabel || (isFloating && label && label.length > 0)
+                    ? ''
+                    : textInputProps?.placeholder
                 }
                 onFocus={() => {
                   onFocus?.();
