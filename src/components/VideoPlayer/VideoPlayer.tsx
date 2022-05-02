@@ -10,7 +10,7 @@ import VideoPlayerControls from './VideoPlayerControls';
 
 export const VideoPlayer = ({
   videoSource,
-  videoPlayerContainerStyles,
+  videoPlayerContainerStyles = {height: 250},
   controlIcons,
   sliderWrapperStyle,
   customThumbComponent,

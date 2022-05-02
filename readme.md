@@ -15,6 +15,8 @@
   - [Switch](#switch)
   - [Tabs](#tabs)
   - [Custom Image](#custom-image)
+  - [Video Player](#video-player)
+  - [Bottom Sheet](#bottom-sheet)
 - [Contribute](#contribute)
 
 ## Introduction
@@ -389,6 +391,103 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | ------------- | ------ | -------- | ------- | ------------------------------------ |
 | heightPercent | number | Yes      | 35      | Image height as per parent container |
 | imageURL      | string | No       |         | Image url to show                    |
+
+### Video Player
+
+#### Usage
+
+```
+  <VideoPlayer
+    videoSource={
+      'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/WeAreGoingOnBullrun.mp4'
+    }
+    videoPlayerContainerStyles={{
+      height: 250,
+    }}
+    controlIcons={{
+      playIcon: () => (
+        <Icon name={'play-circle-outline'} size={50} color={'#fff'} />
+      ),
+      pauseIcon: () => (
+        <Icon name={'pause-circle-outline'} size={50} color={'#fff'} />
+      ),
+      backwardIcon: () => (
+        <Icon name={'play-back-outline'} size={30} color={'#fff'} />
+      ),
+      forwardIcon: () => (
+        <Icon name={'play-forward-outline'} size={30} color={'#fff'} />
+      ),
+    }}
+    customThumbComponent={isBigThumb => (
+      <View
+        style={{
+          width: isBigThumb ? 25 : 19,
+          height: isBigThumb ? 25 : 19,
+          backgroundColor: '#4d4dff',
+          borderRadius: 50,
+        }}
+      />
+    )}
+    sliderWrapperStyle={isFullScreen => ({
+      bottom: isFullScreen ? 10 : -11,
+    })}
+    customTrackStyle={{
+      trackStyle: {height: 4, backgroundColor: '#ddd', borderRadius: 0},
+      minimumTrackTintColor: '#4d4dff',
+      maximumTrackTintColor: '#ddd',
+    }}
+  />
+```
+
+#### Props
+
+| Prop                       | Type                                                                                            | Optional | Default       | Description                                   |
+| -------------------------- | ----------------------------------------------------------------------------------------------- | -------- | ------------- | --------------------------------------------- |
+| videoSource                | string                                                                                          | No       |               | Video source to play                          |
+| videoPlayerContainerStyles | ViewStyle                                                                                       | No       | {height: 250} | Styles for video container                    |
+| controlIcons               | { playIcon?: Function; pauseIcon?: Function; backwardIcon?: Function; forwardIcon?: Function; } | Yes      |               | Pass custom component for basic control icons |
+| customThumbComponent       | (isBigThumb?: boolean) => JSX.Element                                                           | Yes      |               | Pass custom thumb component of your liking    |
+| sliderWrapperStyle         | (isFullScreen?: boolean) => ViewStyle                                                           | Yes      |               | Custom style for slider container             |
+| customTrackStyle           | { trackStyle?: ViewStyle; minimumTrackTintColor?: string; maximumTrackTintColor?: string; }     | Yes      |               | Give custom style to video track              |
+
+### Bottom Sheet
+
+#### Usage
+
+```
+  // const ref = useRef<BottomSheetRefPropsI>(null);
+
+  // * handle opening and closing of bottom sheet
+  // const onPress = useCallback(() => {
+  //   const isActive = ref?.current?.isActive;
+  //   if (isActive) {
+  //     ref?.current?.scrollTo(0);
+  //   } else {
+  //     ref?.current?.scrollTo(-100);
+  //   }
+  // }, []);
+
+  <BottomSheet
+    isVisible={true}
+    handleDismiss={() => {}}
+    hasPanGesture={true}
+    bottomSheetContent={() => (
+      <View>
+        <Text>Bottom sheet content</Text>
+      </View>
+    )}
+  />
+```
+
+#### Props
+
+| Prop                      | Type      | Optional | Default | Description                                              |
+| ------------------------- | --------- | -------- | ------- | -------------------------------------------------------- |
+| isVisible                 | boolean   | Yes      |         | toggle bottom sheet visibility                           |
+| handleDismiss             | function  | Yes      |         | handle opening and closing of bottomsheet                |
+| hasPanGesture             | boolean   | Yes      | true    | If true, user can hold and slide up/down the bottomsheet |
+| bottomSheetContent        | function  | Yes      |         | Render custom component for bottomsheet content          |
+| bottomSheetContainerStyle | ViewStyle | Yes      |         | Custom style for bottomsheet container                   |
 
 ## Contribute
 
