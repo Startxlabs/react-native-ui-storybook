@@ -7,3 +7,8 @@ export interface BottomSheetI {
   bottomSheetContent?: Function;
   bottomSheetContainerStyle?: ViewStyle;
 };
+
+export interface BottomSheetRefPropsI {
+  scrollTo: (destination: number) => void;
+  isActive: () => boolean;
+}
