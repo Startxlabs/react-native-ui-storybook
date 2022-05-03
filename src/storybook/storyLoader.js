@@ -16,6 +16,7 @@ function loadStories() {
   require('./stories/Switch/Switch.stories');
   require('./stories/Tabs/Tabs.stories');
   require('./stories/VideoPlayer/VideoPlayer.stories');
+  require('./stories/WeekView/WeekView.stories');
   require('./stories/Welcome/Welcome.stories');
 }
 
@@ -32,6 +33,7 @@ const stories = [
   './stories/Switch/Switch.stories',
   './stories/Tabs/Tabs.stories',
   './stories/VideoPlayer/VideoPlayer.stories',
+  './stories/WeekView/WeekView.stories',
   './stories/Welcome/Welcome.stories',
 ];
 

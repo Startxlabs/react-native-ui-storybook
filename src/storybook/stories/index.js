@@ -11,3 +11,4 @@ import './Tabs/Tabs.stories';
 import './CustomImage/CustomImage.stories';
 import './VideoPlayer/VideoPlayer.stories';
 import './BottomSheet/BottomSheet.stories';
+import './WeekView/WeekView.stories';
