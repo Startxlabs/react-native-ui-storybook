@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {View, Switch} from 'react-native';
 import {COLORS} from '../../constants/colors';
-import {DefaultSwitchI} from '../../interfaces/SwitchInterface';
+import {DefaultSwitchI} from './SwitchInterface';
 
 export const DefaultSwitch = ({
   disabled = false,

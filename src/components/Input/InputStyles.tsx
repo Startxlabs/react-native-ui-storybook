@@ -24,6 +24,11 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     backgroundColor: COLORS.white,
   },
+  labelTextStyle: {
+    fontSize: 12,
+    marginLeft: 5,
+    marginBottom: 5,
+  },
   inputText: {
     fontSize: 12,
     color: COLORS.black_rgba(0.8),
