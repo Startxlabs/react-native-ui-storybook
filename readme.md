@@ -17,6 +17,7 @@
   - [Custom Image](#custom-image)
   - [Video Player](#video-player)
   - [Bottom Sheet](#bottom-sheet)
+  - [Week View](#week-view)
 - [Contribute](#contribute)
 
 ## Introduction
@@ -488,6 +489,26 @@ Component library built using Storybook. Storybook is an open source tool for bu
 | hasPanGesture             | boolean   | Yes      | true    | If true, user can hold and slide up/down the bottomsheet |
 | bottomSheetContent        | function  | Yes      |         | Render custom component for bottomsheet content          |
 | bottomSheetContainerStyle | ViewStyle | Yes      |         | Custom style for bottomsheet container                   |
+
+### Week View
+
+#### Usage
+
+```
+  <WeekView
+    initialDate={new Date()}
+    onDateChange={date => {}}
+    weekDaysContainerStyle={{backgroundColor: '#fff'}}
+  />
+```
+
+#### Props
+
+| Prop                   | Type                 | Optional | Default    | Description                                     |
+| ---------------------- | -------------------- | -------- | ---------- | ----------------------------------------------- |
+| initialDate            | Date                 | Yes      | new Date() | Initial selected date in week calendar          |
+| onDateChange           | (date: Date) => void | Yes      |            | Function to handle date change in week calendar |
+| weekDaysContainerStyle | ViewStyle            | Yes      |            | Custom styles for week days container           |
 
 ## Contribute
 
